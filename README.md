@@ -1,2 +1,2 @@
-# MIBO-IDE
-Multimodel Interaction Development Environment http://www1.in.tum.de
+# MIBO IDE
+An IDE for Multimodal Controls in Smart Buildings
