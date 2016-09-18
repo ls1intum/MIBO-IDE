@@ -1,0 +1,96 @@
+<link rel="import" href="../../polymer/bower_components/polymer/polymer.html">
+<link rel="import" href="../../polymer/bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../polymer/bower_components/iron-flex-layout/classes/iron-flex-layout.html">
+<link rel="import" href="../../polymer/bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../polymer/bower_components/paper-icon-button/paper-icon-button.html">
+
+<dom-module id="inspector-area">
+
+	<style>
+		
+		:host
+		{
+			width: 100%;
+		}
+				
+		#heading
+		{
+			height: 45px;
+			background-color: #4054B2;
+			color: white;
+		}
+		
+		#mainContent
+		{
+			overflow: auto;
+			min-height: 50px;
+			background-color: white;
+			padding: 10px;
+			word-wrap: break-word;
+		}
+				
+	</style>
+
+	<template>
+  
+		<paper-material id="wrapper" animated="true" elevation="1" class="layout vertical" on-mouseover='showShadow' on-mouseout="hideShadow">
+        
+		  	<span id="heading" class="layout horizontal center-center">
+		  		<paper-icon-button style="visibility: hidden;"  id="placeholder" icon=""></paper-icon-button>
+		  		<div class="flex layout horizontal center-center">{{name}}</div>
+		  		<paper-icon-button style="visibility: hidden;" id="clearButton" on-tap="clearClicked" icon="clear"></paper-icon-button>
+		  	</span>
+	  
+	      	<span id="mainContent" class="flex">
+	      		<div id="infoText" style="text-align: center;">
+	      			<br><span style="font-size:small;">No selection.</span>
+	      		</div>
+	      		<content></content>      		
+			</span>
+      	  
+		</paper-material>
+    
+	</template>
+  
+	<script>
+  
+		Polymer(
+		{
+	    	is: "inspector-area",
+			properties: {
+	        name:
+	        	{
+					type: String,
+					value: "Inspector"
+	        	}
+	      	},
+	      	showShadow: function() {
+	        	this.$.wrapper.setAttribute("elevation", "2");
+	      	},
+	      	hideShadow: function() {
+	        	this.$.wrapper.setAttribute("elevation", "1");
+	      	},
+	      	showClearButton: function() {
+	      		this.$.infoText.style.display = "none";
+	      		this.$.clearButton.style.visibility = "visible";
+	      	},
+	      	hideClearButton:function(){
+	      		this.$.infoText.style.display = "block";
+	      		this.$.clearButton.style.visibility = "hidden";
+	      	},
+	      	clearClicked: function (event, detail, sender) {
+	      		event.stopPropagation();
+			  	this.fire("clear-click");
+			},
+			flush: function(e){
+				var nodes = Polymer.dom(this).childNodes;
+				while(nodes.length>0){
+					Polymer.dom(this).removeChild(nodes[0]);
+					nodes = Polymer.dom(this).childNodes;
+				}
+			}
+	    });
+
+	</script>
+
+</dom-module>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="128" height="128" viewBox="0, 0, 128, 128">
+  <g id="Background">
+    <rect x="0" y="0" width="128" height="128" fill="#FFFFFF"/>
+  </g>
+  <defs>
+    <linearGradient id="Gradient_1" gradientUnits="userSpaceOnUse" x1="59.843" y1="-70.071" x2="90.11" y2="-70.071" gradientTransform="matrix(-0, 1, -1, -0, 0, 0)">
+      <stop offset="0" stop-color="#000000" stop-opacity="0.495"/>
+      <stop offset="0.835" stop-color="#F6E857" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g id="Layer_1">
+    <path d="M0,0 L128,0 L128,128 L0,128 L0,0 z" fill="#FFF100"/>
+    <g>
+      <path d="M34.099,70.337 C29.957,70.337 26.599,66.979 26.599,62.837 C26.599,58.695 29.957,55.337 34.099,55.337 C38.241,55.337 41.599,58.695 41.599,62.837 C41.599,66.979 38.241,70.337 34.099,70.337 z" fill="#000000"/>
+      <path d="M34.099,70.337 C29.957,70.337 26.599,66.979 26.599,62.837 C26.599,58.695 29.957,55.337 34.099,55.337 C38.241,55.337 41.599,58.695 41.599,62.837 C41.599,66.979 38.241,70.337 34.099,70.337 z" fill-opacity="0" stroke="#000000" stroke-width="3"/>
+    </g>
+    <g>
+      <path d="M56.996,62.837 L71.004,62.837" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M56.996,59.237 L47.396,62.837 L56.996,66.437 z" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="2" stroke-opacity="1"/>
+      <path d="M71.004,66.437 L80.604,62.837 L71.004,59.237 z" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="2" stroke-opacity="1"/>
+    </g>
+    <path d="M102.242,59.843 L114.983,86.986 L37.929,90.11 L25.481,65.478 L25.159,62.837 L86.263,62.837 L102.242,59.843 z" fill="url(#Gradient_1)" display="none"/>
+    <g>
+      <path d="M93.763,70.337 C89.621,70.337 86.263,66.979 86.263,62.837 C86.263,58.695 89.621,55.337 93.763,55.337 C97.905,55.337 101.263,58.695 101.263,62.837 C101.263,66.979 97.905,70.337 93.763,70.337 z" fill="#FFF100"/>
+      <path d="M93.763,70.337 C89.621,70.337 86.263,66.979 86.263,62.837 C86.263,58.695 89.621,55.337 93.763,55.337 C97.905,55.337 101.263,58.695 101.263,62.837 C101.263,66.979 97.905,70.337 93.763,70.337 z" fill-opacity="0" stroke="#000000" stroke-width="3"/>
+    </g>
+  </g>
+</svg>

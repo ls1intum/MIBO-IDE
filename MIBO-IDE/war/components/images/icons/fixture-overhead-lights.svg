@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="128" height="128" viewBox="0, 0, 128, 128">
+  <defs>
+    <linearGradient id="Gradient_1" gradientUnits="userSpaceOnUse" x1="91.088" y1="-5.271" x2="184.095" y2="-5.271" gradientTransform="matrix(0.707, 0.707, -0.707, 0.707, 0, 0)">
+      <stop offset="0" stop-color="#000000" stop-opacity="0.495"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="Gradient_2" gradientUnits="userSpaceOnUse" cx="-65.056" cy="-44.078" r="77.384" gradientTransform="matrix(-1, 0, -0, -1, 0, 0)">
+      <stop offset="0" stop-color="#F2D300"/>
+      <stop offset="0" stop-color="#F2D300" stop-opacity="0.432"/>
+      <stop offset="0" stop-color="#F2D300" stop-opacity="0.45"/>
+      <stop offset="0" stop-color="#F2D300" stop-opacity="0.645"/>
+      <stop offset="1" stop-color="#F2D300" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g id="Layer_1">
+    <path d="M0,0 L128,0 L128,128 L0,128 z" fill="#8C9EFF"/>
+    <path d="M106.967,47.299 L159.903,100.447 L107.964,152.386 L42.029,86.788 L106.967,47.299 z" fill="url(#Gradient_1)"/>
+    <path d="M100,45.6 L31.2,45.6 L-0,-1.169 L128,-1.169 L100,45.6 z" fill="url(#Gradient_2)" display="none"/>
+    <g>
+      <path d="M88.169,83.914 L41.979,83.914 L21.033,52.086 L106.967,52.086 L88.169,83.914 z" fill="#CFD8DC"/>
+      <path d="M88.156,85.417 L41.976,85.417" fill-opacity="0" stroke="#EEEEEE" stroke-width="3"/>
+      <path d="M21,49.6 L106.95,49.6" fill-opacity="0" stroke="#646464" stroke-width="5"/>
+      <path d="M36.5,68 L91.5,68" fill-opacity="0" stroke="#B5B5B5" stroke-width="1"/>
+      <path d="M31.5,61 L96.5,61" fill-opacity="0" stroke="#B5B5B5" stroke-width="1"/>
+      <path d="M44,75 L84,75" fill-opacity="0" stroke="#B5B5B5" stroke-width="1"/>
+    </g>
+  </g>
+</svg>

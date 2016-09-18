@@ -1,0 +1,127 @@
+<!doctype html>
+
+<html>
+
+	<head>
+	
+		<!-- -------------------- GENERAL HTML TAGS --------------------- -->
+	
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		
+		<title>MIBO IDE</title>
+		
+		<!-- Include main style sheet -->
+		<link rel="stylesheet" href="styles/main.css">
+		
+		<!-- Avoid loading of favicon -->
+		<link rel="icon" href="favicon.png">
+		
+		<!-- -------------------- WEB COMPONENTS ------------------------ -->
+
+  		<!-- Load WebComponents library -->
+		<script src="components/polymer/bower_components/webcomponentsjs/webcomponents.js"></script>
+		
+		<!-- Polymer adjustments -->
+		<script>
+		
+			// Enable Shadow DOM
+			window.Polymer = window.Polymer || {};
+			window.Polymer.dom = 'shadow';
+			
+			// Method for appending children needs to be registered as early as possible
+			function appendChildToElement (element, child){
+				Polymer.dom(element).appendChild(child);
+			}
+			
+  		</script>
+  		
+  		<!-- Include the application theme -->
+  		<link rel="import" href="styles/app-theme.html">
+
+		<!-- Import Layout classes -->
+		<link rel="import" href="components/polymer/bower_components/iron-flex-layout/classes/iron-flex-layout.html">
+		
+		<!-- Import custom editor elements -->
+		<link rel="import" href="components/custom/actions-area/actions-area.html">
+		<link rel="import" href="components/custom/inspector-area/inspector-area.html">
+		<link rel="import" href="components/custom/toolbar-area/toolbar-area.html">
+		<link rel="import" href="components/custom/library-area/library-area.html">
+		<link rel="import" href="components/custom/definition-section/definition-section.html">
+		<link rel="import" href="components/custom/modality-item/modality-item.html">
+		<link rel="import" href="components/custom/scope-item/scope-item.html">
+		<link rel="import" href="components/custom/list-item/list-item.html">
+		<link rel="import" href="components/custom/control-item/control-item.html">
+		<link rel="import" href="components/custom/inspector-item/inspector-item.html">
+		<link rel="import" href="components/custom/console-area/console-area.html">
+		<link rel="import" href="components/custom/list-section/list-section.html">
+		<link rel="import" href="components/custom/list-section-item/list-section-item.html">
+		
+		<!-- Import polymer elements -->
+		<link rel="import" href="components/polymer/bower_components/paper-material/paper-material.html">
+		<link rel="import" href="components/polymer/bower_components/paper-spinner/paper-spinner.html">
+		<link rel="import" href="components/polymer/bower_components/paper-toast/paper-toast.html">
+		
+		<!-- -------------------- GOOGLE WEB TOOLKIT -------------------- -->
+		
+		<!-- Loading compiled GWT module -->
+		<script type="text/javascript" src="editor/editor.nocache.js"></script>
+		
+	</head>
+  
+	<body unresolved class="fullbleed layout vertical">
+
+		<div class="flex">
+		
+			<div id="overlayer">
+				<paper-material elevation="4">
+					<paper-spinner active></paper-spinner>
+				</paper-material>
+			</div>
+		
+			<div id="toolbar-container"></div>
+			
+			<div id="explorer-container" style="display: block;">
+
+				<div class="layout horizontal">
+				
+					<div id="explorer-selection-container" class="layout horizontal">
+					
+						<div id="targetgroups-container"></div>
+						
+						<div id="users-container"></div>
+						
+					</div>
+					
+					<div id="definitions-container" class="flex"></div>
+					
+				</div>
+			
+			</div>
+
+			<div id="editor-container" style="display: none;">
+					
+				<div class="content layout horizontal"> 
+				
+					<div id="sections-container" class="flex layout vertical">
+					
+						<div id="console-container" class="layout horizontal"></div>
+					
+						<div id="sections-container-top" class="layout horizontal"></div>
+						<div id="sections-container-bottom" class="layout horizontal"></div>
+									   
+					</div>
+				
+					<div id="actions-container" class="layout vertical"></div>
+				
+				</div>
+			
+			</div>
+		
+		</div>
+		
+		<!-- Adjust attribute "duration" for time of showing information in milliseconds  -->
+		<paper-toast duration="2000" id="layer_toast" text="More information."></paper-toast>
+    
+	</body>
+	
+</html>

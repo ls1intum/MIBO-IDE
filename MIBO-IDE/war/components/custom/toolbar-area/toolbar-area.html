@@ -1,0 +1,92 @@
+<link rel="import" href="../../polymer/bower_components/polymer/polymer.html">
+<link rel="import" href="../../polymer/bower_components/iron-flex-layout/classes/iron-flex-layout.html">
+<link rel="import" href="../../polymer/bower_components/paper-header-panel/paper-header-panel.html">
+<link rel="import" href="../../polymer/bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../../polymer/bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../polymer/bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../polymer/bower_components/paper-button/paper-button.html">
+
+<dom-module id="toolbar-area">
+
+	<style>
+		
+		:host
+		{
+			width: 100%;
+		}
+		
+		paper-button
+		{
+			text-transform: none;
+		}
+							
+	</style>
+
+	<template>
+	
+	<paper-header-panel>
+	
+		<paper-toolbar id="definition_toolbar">
+		
+			<div id="definition_actions_left" style="width: 300px; text-align: left; display: none;">
+				<paper-button id="definition_actions_left_back" on-tap="backClicked">
+	  				<iron-icon icon="arrow-back"></iron-icon>
+	  				<span>Back to MIBO Explorer</span>
+				</paper-button>
+			</div>
+			
+			<div class="flex"></div>
+			
+			<div id="definition_name" style="width: 500px; text-align: center;">
+				<span>{{name}}</span>
+			</div>
+			
+			<div class="flex"></div>
+			
+			<div id="definition_actions_right" style="width: 300px; text-align: right; display: none;">
+				<paper-button id="definition_actions_left_attributes" style="color: white;" on-tap="attributeClicked">
+		  			<iron-icon icon="more-horiz"></iron-icon>
+		  			Attributes
+				</paper-button>
+			</div>
+			
+		</paper-toolbar>
+  
+  	</paper-header-panel>
+    
+	</template>
+  
+	<script>
+  
+		Polymer(
+		{
+	    	is: "toolbar-area",
+			properties: {
+	        name:
+	        	{
+					type: String,
+					value: "MIBO IDE"
+	        	}
+	      	},
+	      	backClicked: function (e) {
+	      		e.stopPropagation();
+				this.fire("back-click");
+			},
+			attributeClicked: function (e) {
+				e.stopPropagation();
+			  	this.fire("attribute-click");
+			},
+			setupExplorerView: function() {
+				this.$.definition_actions_left.style.display = "none";
+				this.$.definition_actions_right.style.display = "none";
+			},
+			setupEditorView: function() {
+				this.$.definition_actions_left.style.display = "inline-block";
+				this.$.definition_actions_right.style.display = "inline-block";
+			}
+			
+	    });
+
+	</script>
+
+</dom-module>

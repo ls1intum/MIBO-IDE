@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="128" height="128" viewBox="0, 0, 128, 128">
+  <defs>
+    <linearGradient id="Gradient_1" gradientUnits="userSpaceOnUse" x1="90.062" y1="-1.735" x2="181.272" y2="-1.735" gradientTransform="matrix(0.707, 0.707, -0.707, 0.707, 0, 0)">
+      <stop offset="0" stop-color="#000000" stop-opacity="0.495"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g id="Layer_1">
+    <path d="M0,0 L128,0 L128,128 L0,128 z" fill="#FF8A80"/>
+    <path d="M0,0 L128,0 L128,128 L0,128 z" fill="#8C9EFF"/>
+    <path d="M99.859,27.508 L161.86,94.498 L94,161.443 L32.566,100.009 L99.859,27.508 z" fill="url(#Gradient_1)"/>
+    <g>
+      <path d="M30.076,29.451 L97.924,29.451 L97.924,33.661 L30.076,33.661 L30.076,29.451 z" fill="#686868"/>
+      <path d="M30.076,29.451 L97.924,29.451 L97.924,33.661 L30.076,33.661 L30.076,29.451 z" fill-opacity="0" stroke="#686868" stroke-width="4"/>
+    </g>
+    <g>
+      <path d="M34.53,34.418 L93.47,34.418 L93.47,98.02 L34.53,98.02 L34.53,34.418 z" fill="#B7E2FF"/>
+      <path d="M34.53,34.418 L93.47,34.418 L93.47,98.02 L34.53,98.02 L34.53,34.418 z" fill-opacity="0" stroke="#686868" stroke-width="4"/>
+    </g>
+    <g>
+      <path d="M86.266,90.375 L41.734,90.375" fill-opacity="0" stroke="#686868" stroke-width="3"/>
+      <path d="M86.266,82.453 L41.734,82.453" fill-opacity="0" stroke="#686868" stroke-width="3"/>
+      <path d="M86.266,74.53 L41.734,74.53" fill-opacity="0" stroke="#686868" stroke-width="3"/>
+      <path d="M86.266,66.607 L41.734,66.607" fill-opacity="0" stroke="#686868" stroke-width="3"/>
+      <path d="M86.266,58.684 L41.734,58.684" fill-opacity="0" stroke="#686868" stroke-width="3"/>
+      <path d="M86.266,50.762 L41.734,50.762" fill-opacity="0" stroke="#686868" stroke-width="3"/>
+      <path d="M86.266,42.839 L41.734,42.839" fill-opacity="0" stroke="#686868" stroke-width="3"/>
+    </g>
+  </g>
+</svg>

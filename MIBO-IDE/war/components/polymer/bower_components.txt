@@ -1,0 +1,2 @@
+1. Download the Polymer Starter Kit from: https://github.com/polymerelements/polymer-starter-kit/releases
+2. Replace this text file with the bower_components folder

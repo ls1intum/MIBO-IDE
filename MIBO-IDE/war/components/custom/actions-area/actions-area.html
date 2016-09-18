@@ -1,0 +1,157 @@
+<link rel="import" href="../../polymer/bower_components/polymer/polymer.html">
+<link rel="import" href="../../polymer/bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../polymer/bower_components/iron-flex-layout/classes/iron-flex-layout.html">
+<link rel="import" href="../../polymer/bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../polymer/bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../polymer/bower_components/iron-icons/av-icons.html">
+
+<dom-module id="actions-area">
+
+	<style>
+		
+		:host
+		{
+			width: 100%;
+		}
+				
+		#heading
+		{
+			height: 45px;
+			background-color: #4054B2;
+			color: white;
+			cursor: pointer;
+		}
+		
+		#mainContent
+		{
+			height: 205px;
+			background-color: white;
+			word-wrap: break-word;
+			transition: height 0.3s ease;
+			overflow: auto;
+		}
+		
+		paper-button
+		{
+			margin-top: 4px;
+			text-align: left;
+			display: block;
+			text-transform: none;
+		}
+				
+	</style>
+
+	<template>
+  
+		<paper-material id="wrapper" animated="true" elevation="1" class="layout vertical" on-mouseover='showShadow' on-mouseout="hideShadow">
+        
+		  	<span id="heading" class="layout horizontal center-center" on-tap="toggle">
+		  		<paper-icon-button id="toggleButton" icon="expand-less"></paper-icon-button>
+		  		<div class="flex layout horizontal center-center">{{name}}</div>
+		  		<paper-icon-button style="visibility: hidden;"  id="placeholder" icon=""></paper-icon-button>
+		  	</span>
+	  
+	      	<span id="mainContent">
+	      		
+	      		<paper-button id="button_debug" on-tap="debugClicked">
+	  				<iron-icon icon="bug-report"></iron-icon>
+	  				<span>Debug</span>
+				</paper-button>
+				
+				<paper-button id="button_test" on-tap="testClicked" style="color: lightgrey;">
+	  				<iron-icon icon="av:play-arrow"></iron-icon>
+	  				<span>Test</span>
+				</paper-button>
+				
+				<paper-button id="button_compile" on-tap="compileClicked">
+	  				<iron-icon icon="build"></iron-icon>
+	  				<span>Compile</span>
+				</paper-button>
+				
+				<paper-button id="button_apply" on-tap="applyClicked">
+	  				<iron-icon icon="backup"></iron-icon>
+	  				<span>Apply</span>
+				</paper-button>
+	      	      		
+			</span>
+      	  
+		</paper-material>
+    
+	</template>
+  
+	<script>
+  
+		Polymer(
+		{
+	    	is: "actions-area",
+			properties: {
+				name:
+	        	{
+					type: String,
+					value: "Actions"
+	        	},
+				expanded: {
+					type: Boolean,
+					value: true
+				}
+	      	},
+	      	showShadow: function() {
+				this.$.wrapper.setAttribute("elevation", "2");
+	      	},
+	      	hideShadow: function() {
+				this.$.wrapper.setAttribute("elevation", "1");
+	      	},
+	      	debugClicked: function (e) {
+	      		e.stopPropagation();
+				this.fire("debug-click");
+			},
+			testClicked: function (e) {
+				e.stopPropagation();
+				this.fire("test-click");				
+			},
+			compileClicked: function (e) {
+				e.stopPropagation();
+				this.fire("compile-click");
+			},
+			applyClicked: function (e) {
+				e.stopPropagation();
+				this.fire("apply-click");
+			},
+			ready: function(){
+				// Toggle actions by default
+				this.toggle();
+			},
+	      	toggle: function (event, detail, sender) {
+	      		
+			  	if(this.expanded){
+			  		
+			  		this.$.mainContent.style.height = "0px";
+			  		
+			  		this.$.button_debug.style.visibility = "hidden";
+			  		this.$.button_test.style.display = "none";
+			  		this.$.button_compile.style.display = "none";
+			  		this.$.button_apply.style.display = "none";
+
+			  		this.$.toggleButton.setAttribute("icon", "expand-more");
+			  		
+			  		this.expanded = false;
+			  	}
+			  	else{
+			  		
+			  		this.$.mainContent.style.height = "205px";
+			  		
+			  		this.$.button_debug.style.visibility = "visible";
+			  		this.$.button_test.style.display = "block";
+			  		this.$.button_compile.style.display = "block";
+			  		this.$.button_apply.style.display = "block";
+			  		
+			  		this.$.toggleButton.setAttribute("icon", "expand-less");
+			  		
+			  		this.expanded = true;
+			  	}
+			}
+	    });
+
+	</script>
+
+</dom-module>

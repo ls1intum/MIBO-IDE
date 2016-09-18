@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="128" height="128" viewBox="0, 0, 128, 128">
+  <defs>
+    <linearGradient id="Gradient_1" gradientUnits="userSpaceOnUse" x1="65.985" y1="1.166" x2="181.267" y2="1.166" gradientTransform="matrix(0.707, 0.707, -0.707, 0.707, 0, 0)">
+      <stop offset="0" stop-color="#000000" stop-opacity="0.495"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g id="Layer_1">
+    <path d="M0,0 L128,0 L128,128 L0,128 z" fill="#8C9EFF"/>
+    <path d="M64.27,29.047 L145.787,110.563 L108.914,147.436 L27.397,65.92 L64.27,29.047 z" fill="url(#Gradient_1)"/>
+    <g>
+      <path d="M83.442,59.127 L83.442,74.131" fill-opacity="0" stroke="#EEEEEE" stroke-width="1" stroke-linecap="round" id="Strope"/>
+      <path d="M85.942,74.901 C85.942,76.282 84.823,77.401 83.442,77.401 C82.062,77.401 80.942,76.282 80.942,74.901 C80.942,73.52 82.062,72.401 83.442,72.401 C84.823,72.401 85.942,73.52 85.942,74.901 z" fill="#444444" id="Dot"/>
+      <path d="M64,59.081 L64,105.993" fill-opacity="0" stroke="#EEEEEE" stroke-width="7"/>
+      <path d="M46.073,105.993 L81.927,105.993" fill-opacity="0" stroke="#646464" stroke-width="5"/>
+      <path d="M60.506,66.09 L67.494,66.09 L67.494,70.427 L60.506,66.09 z" fill="#B5B5B5"/>
+      <path d="M43.226,21.169 L82.927,21.169 L100.931,66.099 L27.069,66.099 L43.226,21.169 z" fill="#CFD8DC"/>
+    </g>
+  </g>
+</svg>

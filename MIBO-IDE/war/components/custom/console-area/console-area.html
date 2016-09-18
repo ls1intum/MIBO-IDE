@@ -1,0 +1,101 @@
+<link rel="import" href="../../polymer/bower_components/polymer/polymer.html">
+<link rel="import" href="../../polymer/bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../polymer/bower_components/iron-flex-layout/classes/iron-flex-layout.html">
+<link rel="import" href="../../polymer/bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../polymer/bower_components/paper-icon-button/paper-icon-button.html">
+
+<dom-module id="console-area">
+
+	<style>
+		
+		:host
+		{
+			width: 100%;
+		}
+			
+		#wrapper
+		{
+			height: 300px;
+		}
+				
+		#heading
+		{
+			height: 45px;
+			background-color: #383838;
+			color: white;
+		}
+		
+		#mainContent
+		{
+			overflow: auto;
+			background-color: #DDDDDD;
+			padding: 10px;
+			word-wrap: break-word;
+			font-family: Consolas;
+		}
+	
+	</style>
+
+	<template>
+  
+		<paper-material id="wrapper" animated="true" elevation="1" class="layout vertical" on-mouseover='showShadow' on-mouseout="hideShadow">
+        
+		  	<span id="heading" class="layout horizontal center-center">
+		  	
+		  		<paper-icon-button title="Clear console output" on-tap="flush" id="placeholder" icon="tab"></paper-icon-button>
+		  	
+		  		<div class="flex layout horizontal center-center">{{name}}</div>
+		  	
+		  		<paper-icon-button title="Close console" id="clearButton" on-tap="clearClicked" icon="clear"></paper-icon-button>
+		  	
+		  	</span>
+	  
+	      	<span id="mainContent" class="flex">
+	      	
+	      		<content></content>      		
+			
+			</span>
+      	  
+		</paper-material>
+    
+	</template>
+  
+	<script>
+  
+		Polymer(
+		{
+	    	is: "console-area",
+			properties: {
+	        name:
+	        	{
+					type: String,
+					value: "Console"
+	        	}
+	      	},
+	      	showShadow: function() {
+				this.$.wrapper.setAttribute("elevation", "2");
+	      	},
+	      	hideShadow: function() {
+				this.$.wrapper.setAttribute("elevation", "1");
+	      	},
+	      	clearClicked: function (event, detail, sender) {
+	      		event.stopPropagation();
+				this.fire("clear-click");
+			},
+			updateConsole: function(){
+				var reference = this.$.mainContent;
+				// Delay scrolling to work correctly in Firefox and Safari
+				setTimeout(function(){ reference.scrollTop = reference.scrollHeight; }, 25);
+			},
+			flush: function(e){
+				var nodes = Polymer.dom(this).childNodes;
+				while(nodes.length>0){
+					Polymer.dom(this).removeChild(nodes[0]);
+					nodes = Polymer.dom(this).childNodes;
+				}
+			}
+	    });
+
+	</script>
+
+</dom-module>

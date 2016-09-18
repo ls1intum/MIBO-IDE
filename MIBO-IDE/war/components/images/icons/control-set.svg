@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="128" height="128" viewBox="0, 0, 128, 128">
+  <g id="Background">
+    <rect x="0" y="0" width="128" height="128" fill="#FFFFFF"/>
+  </g>
+  <defs>
+    <linearGradient id="Gradient_1" gradientUnits="userSpaceOnUse" x1="74.534" y1="-0.594" x2="138.076" y2="-0.594" gradientTransform="matrix(0.707, 0.707, 0.707, -0.707, 0, 0)">
+      <stop offset="0" stop-color="#000000" stop-opacity="0.495"/>
+      <stop offset="0.835" stop-color="#F6E857" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g id="Layer_1">
+    <path d="M0,0 L128,0 L128,128 L0,128 L0,0 z" fill="#FFF100"/>
+    <g>
+      <g>
+        <path d="M64,86.593 C59.858,86.593 56.5,83.235 56.5,79.093 C56.5,74.951 59.858,71.593 64,71.593 C68.142,71.593 71.5,74.951 71.5,79.093 C71.5,83.235 68.142,86.593 64,86.593 z" fill="#000000"/>
+        <path d="M64,86.593 C59.858,86.593 56.5,83.235 56.5,79.093 C56.5,74.951 59.858,71.593 64,71.593 C68.142,71.593 71.5,74.951 71.5,79.093 C71.5,83.235 68.142,86.593 64,86.593 z" fill-opacity="0" stroke="#000000" stroke-width="3"/>
+      </g>
+      <g>
+        <path d="M64,58.202 L64,41.407" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M60.4,58.202 L64,67.802 L67.6,58.202 z" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="2" stroke-opacity="1"/>
+      </g>
+    </g>
+    <path d="M64.052,88.324 L86.059,107.85 L105.428,89.841 L64,41.407 L64.052,88.324 z" fill="url(#Gradient_1)" display="none"/>
+  </g>
+</svg>

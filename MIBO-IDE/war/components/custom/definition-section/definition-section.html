@@ -1,0 +1,184 @@
+<link rel="import" href="../../polymer/bower_components/polymer/polymer.html">
+<link rel="import" href="../../polymer/bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../polymer/bower_components/iron-flex-layout/classes/iron-flex-layout.html">
+<link rel="import" href="../../polymer/bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../polymer/bower_components/paper-icon-button/paper-icon-button.html">
+
+<dom-module id="definition-section">
+
+	<style>
+		
+		:host
+		{
+			width: 100%;
+			min-width: 250px;
+		}
+				
+		#heading
+		{
+			border-bottom: 1px solid lightgrey;
+			text-transform: uppercase;
+			height: 45px;
+			background-color: #eeeeff;
+			color: black;
+		}
+		
+		#mainContent
+		{
+		    white-space: nowrap;
+			overflow-x: auto;
+			overflow-y: auto;
+			background-color: white;
+			max-height: 350px;
+			width: 100%;
+			z-index: 2;
+		}
+		
+		#addition
+		{
+			color: lightgrey;
+			background-color: white;
+			min-height: 70px;
+			min-width: 230px;
+		}
+		
+		#footer
+		{
+			border-top: 1px solid lightgrey;
+			height: 45px;
+			background-color: white;
+			font-size: x-small;
+			display: none;
+		}
+		
+	</style>
+
+	<template>
+  
+		<paper-material	id="wrapper" animated="true" elevation="1" class="layout vertical" on-mouseover='mouseOver' on-mouseout="mouseOut">
+	        
+			<div id="heading" class="layout horizontal center-center">
+		  		<paper-icon-button on-tap="infoClicked" style="color: lightgrey;" icon="info-outline"></paper-icon-button>
+		  		<div class="flex layout horizontal center-center">{{name}}</div>
+		  		<paper-icon-button on-tap="stateClicked" id="state" icon="report-problem" style="color: #FFAE67; visibility:hidden;"></paper-icon-button>
+		  		
+		  	</div>
+	  
+	  		<div id="wrapperBody" class="flex layout vertical">
+	  		
+		      	<div id="mainContent" >
+		      		<content></content>
+			  	</div>
+		      	
+		      	<div id="addition" class="flex layout horizontal center-center" on-drop="drop" on-dragenter="dragenter" on-dragover="dragover" on-dragleave="dragleave">
+		      		<paper-icon-button id="addHorizBtn" on-tap="addClicked" icon="add-circle-outline"></paper-icon-button>
+		      	</div>
+	      	
+	      	</div>
+	      	
+	      	<div id="footer" class="layout horizontal center-center">
+		      	Additional information.
+			</div>
+	      	  
+		</paper-material>
+    
+	</template>
+  
+	<script>
+	    Polymer(
+	    {
+	    	is: "definition-section",
+			properties: {
+	        name:
+	        	{
+					type: String,
+					value: "Section"
+	        	},
+	        horizontal:
+	        	{
+		        	type: Boolean,
+		        	value: false,
+		        	observer: '_horizontal'
+	        	}
+	      	},
+	      	mouseOver: function() {
+	        	this.$.wrapper.setAttribute("elevation", "2");
+	      	},
+	      	mouseOut: function() {
+	        	this.$.wrapper.setAttribute("elevation", "1");
+	      	},
+	      	changeStateToInvalid: function() {
+	      		this.$.state.style.visibility = "visible";
+	      	},
+	      	changeStateToNone: function() {
+	      		this.$.state.style.visibility = "hidden";
+	      	},
+	      	_horizontal: function(newValue, oldValue) {
+		      	if(newValue==false){
+				  	this.$.wrapperBody.className = "flex layout vertical";
+		      	}
+		      	else if(newValue==true){
+		      		this.$.wrapperBody.className = "flex layout horizontal";
+		      		this.$.addition.style.borderLeft = "1px solid ghostwhite";
+		      		this.$.mainContent.style.height = "164px";
+		      	}
+	      	},
+	      	infoClicked: function (event, detail, sender) {
+	      		event.stopPropagation();
+			  	this.fire("info-click");
+			},
+			addClicked: function (event, detail, sender) {
+				event.stopPropagation();
+			  	this.fire("add-click");
+			},
+			stateClicked: function (event, detail, sender) {
+				event.stopPropagation();
+			  	this.fire("state-click");
+			},
+			drop: function (e) {
+				if(e.preventDefault) { e.preventDefault(); }
+			    if(e.stopPropagation) { e.stopPropagation(); }
+				this.fire("drop-drag");
+			},
+			dragenter: function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				this.fire("enter-drag");
+			},
+			dragover: function (e) {
+				e.preventDefault();
+				e.stopPropagation();
+				// Increases reliability – but decreases performance?
+				// this.fire("enter-drag");
+			},
+			dragleave: function (e) {
+				e.stopPropagation();
+				this.fire("leave-drag");
+			},
+			applicable: function() {
+				this.$.wrapper.setAttribute("elevation", "2");
+			  	this.$.addition.style.backgroundColor = "rgb(194, 240, 194)";
+			  	this.$.addition.style.color = "white";
+			  	this.$.addHorizBtn.setAttribute("icon", "check-circle");
+			},
+			inapplicable: function() {
+				this.$.wrapper.setAttribute("elevation", "2");
+			  	this.$.addition.style.backgroundColor = "rgb(255, 207, 207)";
+			  	this.$.addition.style.color = "white";
+			  	this.$.addHorizBtn.setAttribute("icon", "cancel");
+			},
+			standard: function() {
+				this.$.addition.style.backgroundColor = "white";
+				this.$.addition.style.color = "lightgrey";
+				this.$.addHorizBtn.setAttribute("icon", "add-circle-outline");
+				this.$.wrapper.setAttribute("elevation", "1");
+			},
+			removeOldChild: function(e){
+				Polymer.dom(this).removeChild(e);
+			}
+			
+	    });
+	
+	</script>
+
+</dom-module>

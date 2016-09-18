@@ -1,0 +1,211 @@
+<link rel="import" href="../../polymer/bower_components/polymer/polymer.html">
+<link rel="import" href="../../polymer/bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../polymer/bower_components/paper-menu/paper-menu.html">
+<link rel="import" href="../../polymer/bower_components/paper-toggle-button/paper-toggle-button.html">
+<link rel="import" href="../../polymer/bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../polymer/bower_components/paper-icon-button/paper-icon-button.html">
+
+<dom-module id="inspector-item">
+
+	<style>
+	
+		*
+		{
+			--paper-toggle-button-checked-bar-color: #BDC3FF;
+			--paper-toggle-button-checked-button-color: #3B58B2;
+			--paper-toggle-button-checked-ink-color: #3B58B2;
+			--paper-toggle-button-unchecked-ink-color: #3B58B2;
+  		}
+		
+		:host
+		{
+			display: block;
+		}
+		
+		#wrapper
+		{
+			background: white;
+		}
+		
+		#image > ::content img
+		{
+			border-radius: 50%;
+			width: 100px;
+			height: 100px;
+		}
+		
+		#heading > ::content h2
+		{
+			margin: 5px 0px 5px 0px;
+			font-size: 1.8rem;
+			font-weight: 300;
+			text-align: center;
+		}
+		
+		#type > ::content h3
+		{
+			font-size: 0.9rem;
+			font-weight: 300;
+			font-style: italic;
+		}
+		
+		#description > ::content p
+		{
+			font-size: 0.9rem;
+			font-weight: 300;
+		}
+		
+		#mainContent
+		{
+			width: 100%;
+		}
+		
+		#type
+		{
+			width: 100%;
+			text-align: center;
+			margin: 5px 0px 5px 0px;
+			padding: 10px 0px 10px 0px;
+			border-top: 1px solid lightgrey;
+			border-bottom: 1px solid lightgrey;
+		}
+		
+		#description
+		{
+			padding: 5px 0px 10px 0px;
+			text-align: center;
+		}
+		
+		#forms
+		{
+			border-top: 1px solid lightgrey;
+			border-bottom: 1px solid lightgrey;
+			font-size: 0.9rem;
+			font-weight: 300;
+			padding: 10px 0px 0px 0px;
+			width: 100%;
+		}
+		
+		#buttons 
+		{
+			margin-top: 10px;
+		}
+		
+		#buttons paper-button
+		{
+			text-transform: none;
+		}
+		
+		::content .item_wrapper
+		{
+			width: 100%;
+			margin-bottom: 10px;
+		}
+		
+		::content .label_name{
+			cursor: help;
+			font-size: 0.9rem;
+			font-weight: 300;
+			display: block;
+			margin-right: 10px;
+		}
+		
+		::content .label_measurement{
+			font-size: 0.9rem;
+			font-weight: 300;
+			display: block;
+			margin-left: 20px;
+		}
+		
+		::content .textbox{
+			font-size: 1.3rem;
+			height: 30px;
+			width: 100%;
+		}
+		
+		::content input[type="text"]
+		{
+			padding: 5px;
+			background-color: white;
+			border: none;
+			border-bottom: solid 1px #d9d9d9;
+			transition: border 0.3s;
+			transition: background-color 0.3s;
+		}
+		
+		::content input[type="text"]:focus,
+		::content input[type="text"].focus
+		{
+			outline: none;
+			background-color: ghostwhite;
+			border: none;
+			border-bottom: solid 1px #d9d9d9;
+		}
+		
+	</style>
+
+	<template>
+
+			<div id="wrapper" class="layout horizontal center-center" >
+			
+				<div id="mainContent" class="layout vertical center-center">
+				
+					<div id="image">
+						<content select="img"></content>
+					</div>
+					<div id="heading">
+						<content select="h2"></content>
+					</div>
+					<div id="type">
+						<content select="h3"></content>
+					</div>
+					<div id="description">
+						<content select="p"></content>
+					</div>
+					<div id="forms">
+						<content></content>
+					</div>
+					<div id="buttons">
+						<paper-button id="saveButton" on-tap="saveClicked">
+	  						<iron-icon icon="save"></iron-icon>
+	  						Save
+						</paper-button>
+						<paper-button id="removeButton" style="color: #DC143C;" on-tap="removeClicked">
+	  						<iron-icon style="color: #DC143C;" icon="delete"></iron-icon>
+	  						Remove
+						</paper-button>
+					</div>
+				</div>
+
+			</div>
+			
+	</template>
+  
+	<script>
+	
+	    Polymer(
+	    {
+	    	is: "inspector-item",
+			saveClicked: function(e) {
+				e.stopPropagation();
+				this.fire("save-click");
+			},
+			removeClicked: function(e) {
+				e.stopPropagation();
+				this.fire("remove-click");
+			},
+			enableLibraryMode: function(e) {
+				this.$.forms.style.display = "none";
+				this.$.buttons.style.display = "none";
+			},
+			hideSaveButton: function(e) {
+				this.$.saveButton.style.display = "none";
+			},
+			hideRemoveButton: function(e) {
+				this.$.removeButton.style.display = "none";
+			}
+	    });
+    
+	</script>
+
+</dom-module>

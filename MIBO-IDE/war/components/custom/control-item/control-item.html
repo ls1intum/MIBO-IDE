@@ -1,0 +1,232 @@
+<link rel="import" href="../../polymer/bower_components/polymer/polymer.html">
+<link rel="import" href="../../polymer/bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../polymer/bower_components/paper-menu/paper-menu.html">
+
+<dom-module id="control-item">
+
+	<style>
+		
+		:host
+		{
+			display: block;
+			position: relative;
+		}
+		
+		#wrapper
+		{
+			padding: 10px;
+			background-color: white;
+			border-bottom: 1px solid white;
+		}
+		
+		#wrapper ::content img
+		{
+			border-radius: 50%;
+			width: 50px;
+			height: 50px;
+			margin-right: 10px;
+		}
+		
+		#wrapper ::content h2
+		{
+			font-size: 1.3rem;
+			font-weight: 300;
+		}
+		
+		#wrapper ::content span
+		{
+			font-size: 0.7rem;
+			font-weight: 300;
+			color: grey;
+		}
+		
+		#drop
+		{
+			background-color: white;
+			height: 72px;
+			width: 100%;
+			border-bottom: 1px solid ghostwhite;
+		}
+		
+		#droptext
+		{
+			padding-left: 10px;
+			padding-top: 11px;
+			pointer-events: none;
+		}
+		
+		#droptext img
+		{
+			border-radius: 50%;
+			width: 50px;
+			height: 50px;
+		}
+		
+		#droptext span
+		{
+			margin-left: 10px;
+			color: lightgrey;
+			font-size: 0.7rem;
+			font-weight: 300;
+		}
+		
+		#dragHelper
+		{
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+		}
+		
+		#actions
+		{
+			visibility: hidden;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			height: 50%;
+			background: radial-gradient(rgba(255,255,255,1), rgba(255,255,255,0.8));
+			z-index: 3;
+		}
+		
+		#connector
+		{
+			position: absolute;
+			top: 45px;
+			left: 9px;
+			z-index: 2;
+		}
+		
+		#state
+		{
+			visibility: hidden;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			height: 50%;
+			background: linear-gradient(to right, rgba(255,255,255 ,0.0), rgba(255,255,255 ,0.0), rgba(255,255,255 ,0.0), rgba(255,255,255 ,1.0), rgba(255,255,255,1.0));
+		}
+		
+	</style>
+
+	<template>
+	
+		<div>
+		
+			<!-- Control Area -->
+		
+			<div id="wrapper" class="layout horizontal center" on-mouseover='mouseOver' on-mouseout="mouseOut">
+			
+				<content select="img"></content>
+			
+				<div id="mainContent" class="layout vertical">
+					<content select="h2"></content>
+					<content select="span"></content>
+				</div>
+			
+				<div id="state" class="layout horizontal center" >
+					<div class="flex"></div>
+		  			<paper-icon-button icon="report-problem" style="color: #FFAE67; padding-right: 15px;"></paper-icon-button>
+				</div>				
+				
+				<img id="connector" src="../../images/connect.svg">
+			
+				<div id="actions">
+			
+					<div style="height: 100%; width: 100%;" class="layout horizontal center-center">
+				  		<paper-icon-button on-tap="infoClicked" icon="settings"></paper-icon-button>
+				  		<paper-icon-button on-tap="deleteClicked" icon="delete"></paper-icon-button>
+				  	</div>
+			
+				</div>
+				
+			</div>
+			
+			<!-- Modality Area -->
+			
+			<div id="drop" on-drop="drop" on-dragenter="dragenter" on-dragover="dragover" on-dragleave="dragleave">
+			
+				<content select="modality-item"></content>
+
+				<div id="droptext" class="layout horizontal center" >
+					<img src="../../images/icons/modality-connect.svg">
+					<span>Drop modality to connect.</span>
+				</div>
+
+			</div>
+		
+		</div>
+		
+	</template>
+  
+	<script>
+	
+	    Polymer(
+	    {
+	    	is: "control-item",
+	      	mouseOver: function(e) {
+	        	this.$.actions.style.visibility = "visible";
+	      	},
+	      	mouseOut: function(e) {
+	        	this.$.actions.style.visibility = "hidden";
+	      	},
+	      	infoClicked: function (e) {
+	      		e.stopPropagation();
+			  	this.fire("info-click");
+			},
+			drop: function (e) {
+				if(e.preventDefault) { e.preventDefault(); }
+			    if(e.stopPropagation) { e.stopPropagation(); }
+				this.fire("drop-drag");
+			},
+			dragenter: function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				this.fire("enter-drag");
+			},
+			dragover: function (e) {
+				e.preventDefault();
+				e.stopPropagation();
+				// Fire the "enter-drag" event here will increase reliability,
+				// but depending on the browser fire several hundred  times
+				// this.fire("enter-drag");
+			},
+			dragleave: function (e) {
+				e.stopPropagation();
+				this.fire("leave-drag");
+			},
+			applicable: function() {
+			  	this.$.drop.style.backgroundColor = "rgb(194, 240, 194)";
+			},
+			inapplicable: function() {
+			  	this.$.drop.style.backgroundColor = "rgb(255, 207, 207)";
+			},
+			standard: function() {
+				this.$.drop.style.backgroundColor = "white";
+			},
+			deleteClicked: function (e) {
+				e.stopPropagation();
+			  	this.fire("delete-click");
+			},
+	      	changeStateToInvalid: function() {
+	      		this.$.state.style.visibility = "visible";
+	      	},
+	      	changeStateToNone: function() {
+	      		this.$.state.style.visibility = "hidden";
+	      	},
+			removeOldChild: function(e){
+				Polymer.dom(this).removeChild(e);
+				this.$.droptext.removeAttribute("hidden");
+			},
+			hideInfotext: function(){
+				this.$.droptext.setAttribute("hidden", "true");
+			}
+	    });
+    
+	</script>
+
+</dom-module>

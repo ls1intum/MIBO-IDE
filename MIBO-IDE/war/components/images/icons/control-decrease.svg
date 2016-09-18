@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="128" height="128" viewBox="0, 0, 128, 128">
+  <g id="Background">
+    <rect x="0" y="0" width="128" height="128" fill="#FFFFFF"/>
+  </g>
+  <defs>
+    <linearGradient id="Gradient_1" gradientUnits="userSpaceOnUse" x1="90.211" y1="2.333" x2="122.682" y2="2.333" gradientTransform="matrix(0.707, 0.707, -0.707, 0.707, 0, 0)">
+      <stop offset="0" stop-color="#000000" stop-opacity="0.495"/>
+      <stop offset="0.835" stop-color="#F6E857" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g id="Layer_1">
+    <path d="M0,0 L128,0 L128,128 L0,128 L0,0 z" fill="#FFF100"/>
+    <g>
+      <g>
+        <path d="M55.733,65.587 C51.591,65.587 48.233,68.944 48.233,73.087 C48.233,77.229 51.591,80.587 55.733,80.587 C59.875,80.587 63.233,77.229 63.233,73.087 C63.233,68.944 59.875,65.587 55.733,65.587 z" fill="#000000"/>
+        <path d="M55.733,65.587 C51.591,65.587 48.233,68.944 48.233,73.087 C48.233,77.229 51.591,80.587 55.733,80.587 C59.875,80.587 63.233,77.229 63.233,73.087 C63.233,68.944 59.875,65.587 55.733,65.587 z" fill-opacity="0" stroke="#000000" stroke-width="3"/>
+      </g>
+      <g>
+        <path d="M69.043,59.196 L60.915,67.324" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M71.589,61.741 L75.831,52.408 L66.497,56.65 z" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="2" stroke-opacity="1"/>
+      </g>
+      <g>
+        <path d="M88.591,25.518 C80.788,25.518 74.462,31.844 74.462,39.648 C74.462,47.451 80.788,53.777 88.591,53.777 C96.395,53.777 102.72,47.451 102.72,39.648 C102.72,31.844 96.395,25.518 88.591,25.518 z" fill="#000000"/>
+        <path d="M88.591,25.518 C80.788,25.518 74.462,31.844 74.462,39.648 C74.462,47.451 80.788,53.777 88.591,53.777 C96.395,53.777 102.72,47.451 102.72,39.648 C102.72,31.844 96.395,25.518 88.591,25.518 z" fill-opacity="0" stroke="#000000" stroke-width="3"/>
+      </g>
+      <g>
+        <path d="M40.443,87.318 L31.078,96.683" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M42.989,89.864 L47.231,80.53 L37.897,84.772 z" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="2" stroke-opacity="1"/>
+        <path d="M28.532,102.829 C26.544,102.829 24.932,101.217 24.932,99.229 C24.932,97.241 26.544,95.629 28.532,95.629 C30.52,95.629 32.132,97.241 32.132,99.229 C32.132,101.217 30.52,102.829 28.532,102.829" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="2" stroke-opacity="1"/>
+      </g>
+    </g>
+    <path d="M99.091,28.486 L121.378,52.12 L46.054,122.389 L25.28,102.482 L99.091,28.486 z" fill="url(#Gradient_1)" display="none"/>
+  </g>
+</svg>

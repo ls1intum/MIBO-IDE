@@ -1,0 +1,111 @@
+<link rel="import" href="../../polymer/bower_components/polymer/polymer.html">
+<link rel="import" href="../../polymer/bower_components/iron-flex-layout/iron-flex-layout.html">
+
+<dom-module id="scope-item">
+
+	<style>
+		
+		:host
+		{
+			display: inline-block;
+			position: relative;
+		}
+		
+		#content_wrapper
+		{
+			padding: 15px 0px 15px 15px;
+		}
+		
+		#content_wrapper ::content img
+		{
+			border-radius: 50%;
+			width: 100px;
+			height: 100px;
+			margin-bottom: 5px;
+		}
+		
+		#content_wrapper ::content h2
+		{
+			font-size: 1.3rem;
+			font-weight: 300;
+		}
+		
+		#actions
+		{
+			visibility: hidden;
+			position: absolute;
+			top: 10px;
+			left: calc(100% / 2 - 52.5px);
+			width: 120px;
+			height: 100px;
+		}
+		
+		#actions #left
+		{
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			background-color: white;
+			border-radius: 50%;
+		}
+		
+		#actions #right
+		{
+			position: absolute;
+			top: 0px;
+			right: 0px;
+			background-color: white;
+			border-radius: 50%;
+		}
+		
+	</style>
+
+	<template>
+	
+		<div on-mouseover='mouseOver' on-mouseout="mouseOut" >
+			
+			<div id="content_wrapper"  class="layout vertical center">
+		  		<content select="img"></content>
+		  		<content select="h2"></content>
+			</div>
+		  
+		  	<div id="actions">
+				<paper-icon-button id="left" on-tap="infoClicked" icon="settings"></paper-icon-button>
+				<paper-icon-button id="right" on-tap="deleteClicked" icon="delete"></paper-icon-button>
+			</div>
+			
+		</div>
+	  
+	</template>
+  
+	<script>
+	
+	    Polymer(
+	    {
+	    	is: "scope-item",
+			properties: {
+	        	name:
+	        	{
+					type: String,
+					value: "Scope Item"
+	        	}
+	      	},
+	      	mouseOver: function(e) {
+	      		this.$.actions.style.visibility = "visible";
+	      	},
+	      	mouseOut: function(e) {
+	      		this.$.actions.style.visibility = "hidden";
+	      	},
+	      	infoClicked: function (e) {
+	      		e.stopPropagation();
+			  	this.fire("info-click");
+			},
+			deleteClicked: function (e) {
+				e.stopPropagation();
+			  	this.fire("delete-click");
+			}
+	    });
+
+	</script>
+
+</dom-module>

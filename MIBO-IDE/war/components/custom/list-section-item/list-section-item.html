@@ -1,0 +1,246 @@
+<link rel="import" href="../../polymer/bower_components/polymer/polymer.html">
+<link rel="import" href="../../polymer/bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../polymer/bower_components/paper-menu/paper-menu.html">
+
+<dom-module id="list-section-item">
+
+	<style>
+		
+		:host
+		{
+			display: block;
+			position: relative;
+			
+		}
+		
+		#wrapper
+		{
+			padding: 10px;
+			border-bottom: 1px solid ghostwhite;
+			border-top: 1px solid white;
+			border-left: 0px solid white;
+			background: white;
+		}
+		
+		#wrapper ::content img
+		{
+			border-radius: 50%;
+			width: 50px;
+			height: 50px;
+			margin-right: 10px;
+		}
+		
+		#wrapper ::content h2
+		{
+			font-size: 1.3rem;
+			font-weight: 300;
+		}
+		
+		#wrapper ::content span
+		{
+			font-size: 0.7rem;
+			font-weight: 300;
+		}
+		
+		#actions
+		{
+			cursor: pointer;
+			visibility: hidden;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0), rgba(255,255,255,1), rgba(255,255,255,1));
+		}
+		
+		#details
+		{
+			background-color: white;
+			border-left: 0px solid white;
+			border-bottom: 1px solid ghostwhite;
+		}
+		
+		::content #details_content,
+		#details_content
+		{
+			display: block;
+			width:735px;
+			overflow-x: scroll;
+			overflow-y: scroll;
+		}
+		
+		::content #details_content .definitionSection,
+		#details_content .definitionSection
+		{
+			background-color: white;
+			margin: 10px 0px 20px 10px;
+			display: inline-block;
+		}
+		
+		::content .definitionTitle,
+		.definitionTitle
+		{
+			background-color: white;
+			font-size: 1.0rem;
+			font-weight: 200;
+			padding: 10px 10px 10px 10px;
+			border-bottom: 1px solid lightgrey;
+			cursor: help;
+		}
+		
+		::content #details_content img,
+		#details_content img
+		{
+			width:30px;
+			height:30px;
+			border-radius: 50%;
+			margin: 10px 0px 10px 10px;
+			cursor: help;
+		}
+		
+		#details_actions
+		{
+			margin-bottom: 20px;
+		}
+		
+	</style>
+
+	<template>
+	
+		<div on-mouseover='mouseOver' on-mouseout="mouseOut">
+		
+			<div id="wrapper" class="layout horizontal center" >
+				<content select="img"></content>
+				<div id="mainContent" class="layout vertical">
+					<content select="h2"></content>
+					<span id="subtitle"><content select="span"></content></span>
+				</div>
+				<div class="flex"></div>
+			</div>
+			
+			<div id="actions" on-tap="nextClicked">
+				<div style="height: 100%; width: 100%;" class="layout horizontal center-center">
+					<div class="flex"></div>
+					
+			  		<paper-icon-button id="actions_delete_button" on-tap="deleteClicked"  icon="delete" style="color: #F44336; margin-right:20px;"></paper-icon-button>
+			  	</div>
+			</div>
+			
+			<div id="details" style="display: none;" class="layout horizontal vertical">
+			
+				<div id="details_content">
+				
+				</div>
+				
+				<div id="details_actions" class="layout horizontal center-center">
+				
+					<paper-button  on-tap="editClicked" style="color: #3F51B5;">
+	  					<iron-icon icon="create"></iron-icon>
+	  					Edit
+					</paper-button>
+					
+					<paper-button on-tap="deleteClicked" id="removeButton" style="color: #F44336;">
+	  					<iron-icon icon="delete"></iron-icon>
+	  					Remove
+					</paper-button>
+				
+				</div>
+			
+			</div>
+		
+		</div>
+		
+	</template>
+  
+	<script>
+	
+	    Polymer(
+	    {
+	    	is: "list-section-item",
+	    	properties: {
+	        	generic:
+					{
+						type: Boolean,
+						value: false
+					}	        	
+	      	},
+	      	mouseOver: function(e) {
+	      		this.$.actions.style.visibility = "visible";
+	      	},
+	      	mouseOut: function(e) {
+	      		this.$.actions.style.visibility = "hidden";
+	      	},
+	      	deleteClicked: function (e) {
+	      		e.stopPropagation();
+	      		if(this.generic){
+	      			alert("This user contains generic definitions and cannot be deleted.")
+	      		}
+	      		else{
+				  	this.fire("delete-click");
+	      		}
+			},
+	      	nextClicked: function (e) {
+	      		e.stopPropagation();
+			  	this.fire("next-click");
+			},
+			editClicked: function (e) {
+	      		e.stopPropagation();
+			  	this.fire("edit-click");
+			},
+			highlight: function(){
+				this.$.wrapper.style.backgroundColor = "#FFF9C4";
+				this.$.wrapper.style.borderLeft = "3px solid #FFEB3B";
+			},
+			unhighlight: function(){
+				this.$.wrapper.style.backgroundColor = "white";
+				this.$.wrapper.style.borderLeft = "0px solid white";
+			},
+			genericStyle: function(){
+				this.$.mainContent.style.fontStyle = "italic";
+				this.$.actions_delete_button.setAttribute("icon", "info-outline");
+				this.generic = true;
+			},
+			hideSubtitle: function(){
+				this.$.subtitle.style.display = "none";
+			},
+			showDetails: function(){
+				this.$.actions.style.display = "none"
+				this.$.details.style.display = "inline-block";
+			},
+			hideDetails: function(){
+				this.$.details.style.display = "none";
+				this.$.actions.style.display = "inline-block"
+			},
+			addSectionDetails: function(name, description, icons){
+			
+				var container = document.createElement("div");
+				container.className = "definitionSection";
+				
+				var titleElement = document.createElement("div");
+				titleElement.className = "definitionTitle"
+				
+				var titleText = document.createTextNode(name);
+				
+				titleElement.appendChild(titleText);
+				titleElement.setAttribute("title", description);
+				container.appendChild(titleElement);
+				
+				for(var i = 0; i < icons.length; i++){
+						
+					var image = document.createElement("img");
+					image.setAttribute("src", icons[i][0])
+					image.setAttribute("title", icons[i][1]);
+					
+					container.appendChild(image);
+					
+				}
+
+				this.$.details_content.appendChild(container);
+				
+			}
+	    });
+    
+	</script>
+
+</dom-module>

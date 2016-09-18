@@ -1,0 +1,139 @@
+<link rel="import" href="../../polymer/bower_components/polymer/polymer.html">
+<link rel="import" href="../../polymer/bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../polymer/bower_components/iron-flex-layout/classes/iron-flex-layout.html">
+<link rel="import" href="../../polymer/bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../polymer/bower_components/paper-icon-button/paper-icon-button.html">
+
+<dom-module id="list-section">
+
+	<style>
+		
+		:host #wrapper
+		{
+			width: 100%;
+			display: inline-block;
+		}
+				
+		#heading
+		{
+			border-bottom: 1px solid lightgrey;
+			text-transform: uppercase;
+			height: 45px;
+			background-color: #eeeeff;
+			color: black;
+		}
+		
+		#mainContent
+		{
+		    white-space: nowrap;
+			overflow-x: auto;
+			overflow-y: auto;
+			background-color: white;
+			height: 500px;
+			z-index: 2;
+		}
+		
+		#footer
+		{
+			border-top: 1px solid lightgrey;
+			height: 45px;
+			background-color: white;
+			font-size: x-small;
+		}
+		
+	</style>
+
+	<template>
+  
+		<paper-material	id="wrapper" animated="true" elevation="1" class="layout vertical" on-mouseover='mouseOver' on-mouseout="mouseOut">
+	        
+			<div id="heading" class="layout horizontal center-center">
+				<paper-icon-button id="add" on-tap="addClicked" style="color: grey;" icon="add"></paper-icon-button>
+		  		<div class="flex layout horizontal center-center">{{name}}</div>
+		  		<paper-icon-button id="expand" on-tap="expandClicked" style="color: grey; visibility: hidden;" icon="unfold-more"></paper-icon-button>
+		  	</div>
+	  
+	  		<div id="wrapperBody" class="flex layout vertical">
+	  		
+		      	<div id="mainContent" >
+		      		<content></content>
+			  	</div>
+		      	
+	      	</div>
+	      	
+	      	<div id="footer" class="layout horizontal center-center">
+			</div>
+	      	  
+		</paper-material>
+    
+	</template>
+  
+	<script>
+	    Polymer(
+	    {
+	    	is: "list-section",
+			properties: {
+	        	name:
+	        	{
+					type: String,
+					value: "List section"
+	        	},
+	        	number:
+	        	{
+	        		type: Number,
+	        		value: 0,
+	        		observer:'_updateFooter'
+	        	}	        	
+	      	},
+	      	mouseOver: function() {
+				this.$.wrapper.setAttribute("elevation", "2");
+	      	},
+	      	mouseOut: function() {
+				this.$.wrapper.setAttribute("elevation", "1");
+	      	},
+			addClicked: function (event, detail, sender) {
+				event.stopPropagation();
+			  	this.fire("add-click");
+			},
+			expandClicked: function (event, detail, sender) {
+				event.stopPropagation();
+				this.fire("expand-click");
+			},
+			showLessButton: function(){
+				this.$.expand.setAttribute("icon", "unfold-less");
+				this.$.expand.style.visibility = "visible";
+			},
+			showMoreButton: function(){
+				this.$.expand.setAttribute("icon", "unfold-more");
+				this.$.expand.style.visibility = "visible";
+			},
+			hideExpandButton: function(){
+				this.$.expand.style.visibility = "hidden";
+			},
+			removeOldChild: function(e){
+				Polymer.dom(this).removeChild(e);
+			},
+			flush: function(){
+				var nodes = Polymer.dom(this).childNodes;
+				while(nodes.length>0){
+					Polymer.dom(this).removeChild(nodes[0]);
+					nodes = Polymer.dom(this).childNodes;
+				}
+			},
+			_updateFooter: function(){
+				if(this.number == 1){
+					this.$.footer.innerHTML = this.number + " item";
+				}
+				else if(this.number == 0){
+					this.$.footer.innerHTML = "No items";
+				}
+				else{
+					this.$.footer.innerHTML = this.number + " items";
+				}
+			}
+			
+	    });
+	
+	</script>
+
+</dom-module>

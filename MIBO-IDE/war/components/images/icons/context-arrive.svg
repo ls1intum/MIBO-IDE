@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0" y="0" width="128" height="128" viewBox="0, 0, 128, 128">
+  <defs>
+    <linearGradient id="Gradient_1" gradientUnits="userSpaceOnUse" x1="90.326" y1="0.003" x2="200.665" y2="0.003" gradientTransform="matrix(0.707, 0.707, -0.707, 0.707, 0, 0)">
+      <stop offset="0" stop-color="#000000" stop-opacity="0.495"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g id="Layer_1">
+    <path d="M0,0 L128,0 L128,128 L0,128 z" fill="#FAB350"/>
+    <path d="M101.165,26.835 L175.012,108.774 L92.465,166.328 L26.707,101.036 L101.165,26.835 z" fill="url(#Gradient_1)"/>
+    <g>
+      <path d="M28.121,28.121 L99.879,28.121 L99.879,99.879 L28.121,99.879 L28.121,28.121 z" fill="#00A66A"/>
+      <path d="M28.121,28.121 L99.879,28.121 L99.879,99.879 L28.121,99.879 L28.121,28.121 z" fill-opacity="0" stroke="#686868" stroke-width="3"/>
+    </g>
+    <path d="M28.121,28.121 L45.078,51.896 L43.454,74.95 L48,86.639 L61.313,99.879 L28.121,99.879 L28.121,28.121 z" fill="#0085CF"/>
+    <path d="M64,39.233 L64,67.157" fill-opacity="0" stroke="#686868" stroke-width="4"/>
+    <path d="M64,48.974 C59.712,48.974 56.237,45.498 56.237,41.211 C56.237,36.923 59.712,33.447 64,33.447 C68.288,33.447 71.763,36.923 71.763,41.211 C71.763,45.498 68.288,48.974 64,48.974 z" fill="#D11D00"/>
+    <path d="M28.121,28.121 L99.879,28.121 L99.879,99.879 L28.121,99.879 L28.121,28.121 z" fill-opacity="0" stroke="#686868" stroke-width="3"/>
+    <g>
+      <path d="M83.363,66.554 L109.174,66.554" fill-opacity="0" stroke="#000000" stroke-width="4" stroke-linejoin="round"/>
+      <g>
+        <path d="M83.363,62.954 L73.763,66.554 L83.363,70.154 z" fill="#000000"/>
+        <path d="M83.363,62.954 L73.763,66.554 L83.363,70.154 z" fill-opacity="0" stroke="#000000" stroke-width="4"/>
+      </g>
+    </g>
+  </g>
+</svg>
