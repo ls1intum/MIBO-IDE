@@ -1,3 +1,5 @@
+### General ###
+
 *.class
 
 # Mobile Tools for Java (J2ME)
@@ -10,3 +12,29 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+### OSX ###
+.DS_Store
+
+### Eclipse ###
+MIBO-IDE/.settings
+
+### GWT ###
+
+# Caches
+MIBO-IDE/gwt-unitCache/
+
+# Caches and deployment
+MIBO-IDE/war/editor/
+MIBO-IDE/war/WEB-INF/deploy/
+MIBO-IDE/war/WEB-INF/classes/
+
+#JARs
+MIBO-IDE/war/WEB-INF/lib/gwt-dev.jar
+MIBO-IDE/war/WEB-INF/lib/gwt-servlet.jar
+
+### Polymer ###
+
+# Library and elements
+MIBO-IDE/war/components/polymer/bower_components/
+
