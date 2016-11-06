@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><mibo xmlns="http://www1.in.tum.de/mibo" xmlns:gestures="http://www1.in.tum.de/mibo/gestures" xmlns:wimp="http://www1.in.tum.de/mibo/wimp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www1.in.tum.de/mibo MIBO_Scheme.xsd">
+    <definition id="d1" name="Button Control">
+        <scope>
+            <item group="Lights"/>
+        </scope>
+        <select>
+            <gestures:pointAtGesture/>
+        </select>
+        <control>
+            <set>
+                <wimp:buttonPressed id="iPhone"/>
+            </set>
+        </control>
+    </definition>
+    <definition id="d2" name="Button Control Extended">
+        <scope>
+            <item group="Lights"/>
+        </scope>
+        <entry>
+            <gestures:headNod/>
+        </entry>
+        <select>
+            <gestures:pointAtGesture/>
+        </select>
+        <control>
+            <set>
+                <wimp:buttonPressed id="iPhone"/>
+            </set>
+        </control>
+        <exit>
+            <gestures:armAboveHead/>
+        </exit>
+    </definition>
+</mibo>

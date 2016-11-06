@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><mibo xmlns="http://www1.in.tum.de/mibo" xmlns:gestures="http://www1.in.tum.de/mibo/gestures" xmlns:voice="http://www1.in.tum.de/mibo/voice" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www1.in.tum.de/mibo MIBO_Scheme.xsd">
+    <definition id="d1" name="Basic Interaction Definition"> 
+        <scope>
+            <item group="Blinds"/>
+            <item group="Louvers"/>
+            <item group="Windows"/>
+            <item group="Plugs"/>
+        </scope>
+        <select>
+            <gestures:pointAtGesture/>
+        </select>
+        <control>
+            <toggle off="0.0">
+                <gestures:recurringHandGesture/>
+            </toggle>
+        </control>
+    </definition>
+</mibo>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><mibo xmlns="http://www1.in.tum.de/mibo" xmlns:gestures="http://www1.in.tum.de/mibo/gestures" xmlns:voice="http://www1.in.tum.de/mibo/voice" xmlns:wimp="http://www1.in.tum.de/mibo/wimp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www1.in.tum.de/mibo MIBO_Scheme.xsd">
+    <definition id="d1" name="Simple Light Control">
+        <scope>
+            <item group="Lights"/>
+        </scope>
+        <select>
+            <gestures:pointAtGesture optional="true"/>
+            <voice:selectItem optional="true"/>
+        </select>
+        <control>
+            <set>
+                <wimp:buttonPressed id="iPhone"/>
+            </set>
+        </control>
+    </definition>
+    <definition id="d2" name="Direct Light Level Control">
+        <scope>
+            <item group="Lights"/>
+        </scope>
+        <select>
+            <gestures:pointAtGesture/>
+        </select>
+        <control>
+            <set>
+                <gestures:steadyPoseGesture min_duration_ms="2000"/>
+            </set>
+        </control>
+    </definition>
+    <definition id="d3" name="Control Computer with Head">
+        <scope>
+            <item group="Computers"/>
+        </scope>
+        <select>
+            <gestures:pointAtGesture/>
+        </select>
+        <control>
+            <toggle>
+                <gestures:headNod/>
+            </toggle>
+        </control>
+    </definition>
+</mibo>
