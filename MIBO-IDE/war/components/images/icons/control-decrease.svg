@@ -5,32 +5,42 @@
     <rect x="0" y="0" width="128" height="128" fill="#FFFFFF"/>
   </g>
   <defs>
-    <linearGradient id="Gradient_1" gradientUnits="userSpaceOnUse" x1="90.211" y1="2.333" x2="122.682" y2="2.333" gradientTransform="matrix(0.707, 0.707, -0.707, 0.707, 0, 0)">
+    <linearGradient id="Gradient_1" gradientUnits="userSpaceOnUse" x1="123.734" y1="0.233" x2="155.66" y2="0.233" gradientTransform="matrix(0.707, 0.707, 0.707, -0.707, 0, 0)">
+      <stop offset="0" stop-color="#000000" stop-opacity="0.495"/>
+      <stop offset="0.835" stop-color="#F6E857" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="Gradient_2" gradientUnits="userSpaceOnUse" x1="77.461" y1="0.641" x2="95.112" y2="0.641" gradientTransform="matrix(0.707, 0.707, 0.707, -0.707, 0, 0)">
+      <stop offset="0" stop-color="#000000" stop-opacity="0.495"/>
+      <stop offset="0.835" stop-color="#F6E857" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="Gradient_3" gradientUnits="userSpaceOnUse" x1="40.07" y1="-0.086" x2="50.502" y2="-0.086" gradientTransform="matrix(0.707, 0.707, 0.707, -0.707, 0, 0)">
       <stop offset="0" stop-color="#000000" stop-opacity="0.495"/>
       <stop offset="0.835" stop-color="#F6E857" stop-opacity="0"/>
     </linearGradient>
   </defs>
   <g id="Layer_1">
     <path d="M0,0 L128,0 L128,128 L0,128 L0,0 z" fill="#FFF100"/>
+    <path d="M76.643,98.343 L100.541,118.236 L119.909,100.227 L100.042,77.681 L76.643,98.343 z" fill="url(#Gradient_1)" display="none"/>
     <g>
       <g>
-        <path d="M55.733,65.587 C51.591,65.587 48.233,68.944 48.233,73.087 C48.233,77.229 51.591,80.587 55.733,80.587 C59.875,80.587 63.233,77.229 63.233,73.087 C63.233,68.944 59.875,65.587 55.733,65.587 z" fill="#000000"/>
-        <path d="M55.733,65.587 C51.591,65.587 48.233,68.944 48.233,73.087 C48.233,77.229 51.591,80.587 55.733,80.587 C59.875,80.587 63.233,77.229 63.233,73.087 C63.233,68.944 59.875,65.587 55.733,65.587 z" fill-opacity="0" stroke="#000000" stroke-width="3"/>
+        <path d="M55.733,62.413 C51.591,62.413 48.233,59.056 48.233,54.913 C48.233,50.771 51.591,47.413 55.733,47.413 C59.875,47.413 63.233,50.771 63.233,54.913 C63.233,59.056 59.875,62.413 55.733,62.413 z" fill="#000000"/>
+        <path d="M55.733,62.413 C51.591,62.413 48.233,59.056 48.233,54.913 C48.233,50.771 51.591,47.413 55.733,47.413 C59.875,47.413 63.233,50.771 63.233,54.913 C63.233,59.056 59.875,62.413 55.733,62.413 z" fill-opacity="0" stroke="#000000" stroke-width="3"/>
       </g>
       <g>
-        <path d="M69.043,59.196 L60.915,67.324" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-linejoin="round"/>
-        <path d="M71.589,61.741 L75.831,52.408 L66.497,56.65 z" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="2" stroke-opacity="1"/>
+        <path d="M69.043,68.804 L60.915,60.676" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M66.497,71.35 L75.831,75.592 L71.589,66.259 z" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="2" stroke-opacity="1"/>
       </g>
       <g>
-        <path d="M88.591,25.518 C80.788,25.518 74.462,31.844 74.462,39.648 C74.462,47.451 80.788,53.777 88.591,53.777 C96.395,53.777 102.72,47.451 102.72,39.648 C102.72,31.844 96.395,25.518 88.591,25.518 z" fill="#000000"/>
-        <path d="M88.591,25.518 C80.788,25.518 74.462,31.844 74.462,39.648 C74.462,47.451 80.788,53.777 88.591,53.777 C96.395,53.777 102.72,47.451 102.72,39.648 C102.72,31.844 96.395,25.518 88.591,25.518 z" fill-opacity="0" stroke="#000000" stroke-width="3"/>
+        <path d="M88.591,102.482 C80.788,102.482 74.462,96.156 74.462,88.352 C74.462,80.549 80.788,74.223 88.591,74.223 C96.395,74.223 102.72,80.549 102.72,88.352 C102.72,96.156 96.395,102.482 88.591,102.482 z" fill="#000000"/>
+        <path d="M88.591,102.482 C80.788,102.482 74.462,96.156 74.462,88.352 C74.462,80.549 80.788,74.223 88.591,74.223 C96.395,74.223 102.72,80.549 102.72,88.352 C102.72,96.156 96.395,102.482 88.591,102.482 z" fill-opacity="0" stroke="#000000" stroke-width="3"/>
       </g>
       <g>
-        <path d="M40.443,87.318 L31.078,96.683" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-linejoin="round"/>
-        <path d="M42.989,89.864 L47.231,80.53 L37.897,84.772 z" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="2" stroke-opacity="1"/>
-        <path d="M28.532,102.829 C26.544,102.829 24.932,101.217 24.932,99.229 C24.932,97.241 26.544,95.629 28.532,95.629 C30.52,95.629 32.132,97.241 32.132,99.229 C32.132,101.217 30.52,102.829 28.532,102.829" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="2" stroke-opacity="1"/>
+        <path d="M40.443,40.682 L31.078,31.317" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M37.897,43.228 L47.231,47.47 L42.989,38.136 z" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="2" stroke-opacity="1"/>
+        <path d="M24.932,28.771 C24.932,26.783 26.544,25.171 28.532,25.171 C30.52,25.171 32.132,26.783 32.132,28.771 C32.132,30.759 30.52,32.371 28.532,32.371 C26.544,32.371 24.932,30.759 24.932,28.771" fill="#000000" fill-opacity="1" stroke="#000000" stroke-width="2" stroke-opacity="1"/>
       </g>
     </g>
-    <path d="M99.091,28.486 L121.378,52.12 L46.054,122.389 L25.28,102.482 L99.091,28.486 z" fill="url(#Gradient_1)" display="none"/>
+    <path d="M48.902,60.645 L61.918,72.364 L72.678,61.83 L62.39,48.835 L48.902,60.645 z" fill="url(#Gradient_2)" display="none"/>
+    <path d="M25.044,31.623 L32.922,38.498 L38.699,32.721 L31.854,25.518 L25.044,31.623 z" fill="url(#Gradient_3)" display="none"/>
   </g>
 </svg>
