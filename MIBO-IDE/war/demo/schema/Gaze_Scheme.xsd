@@ -1,0 +1,64 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www1.in.tum.de/mibo/gaze" version="1.0" elementFormDefault="qualified" xmlns:ma="http://www1.in.tum.de/mibo/annotations">
+  <xs:import namespace="http://www1.in.tum.de/mibo/annotations" schemaLocation="MIBO_Annotations.xsd" ></xs:import>
+  <xs:annotation>
+    <xs:appinfo >
+      <ma:annotations>
+        <ma:name>Gaze Commands</ma:name>
+        <ma:description>Interpreting the position of an occupant's eyes, in particular one's iris, can be evaluated as a modality of type gaze command. This also includes related all motions, such as winking or eye-rolling.</ma:description>
+        <ma:type>Modality</ma:type>
+      </ma:annotations>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="lookAt">
+    <xs:annotation>
+      <xs:documentation>
+        <ma:annotations>
+          <ma:name>Look At</ma:name>
+          <ma:description>This gaze command is performed by gazing at a scope item.</ma:description>
+          <ma:type>Gaze Command</ma:type>
+          <ma:icon>modality-gaze-look-at</ma:icon>
+        </ma:annotations>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="optional" default="false" type="xs:boolean" use="optional">
+        <xs:annotation>
+          <xs:documentation>
+           <ma:annotations>
+              <ma:name>Optional</ma:name>
+              <ma:description>If optional is activated, the modality is not necessarily required to activate the definition. However, it might support the overall recognition.</ma:description>
+              <ma:type>Attribute</ma:type>
+              <ma:measurement>Boolean</ma:measurement>
+            </ma:annotations>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="rollEyes">
+    <xs:annotation>
+      <xs:documentation>
+        <ma:annotations>
+          <ma:name>Roll Eyes</ma:name>
+          <ma:description>This gaze command is performed by rolling one's eyes in a 360 degree angle.</ma:description>
+          <ma:type>Gaze Command</ma:type>
+          <ma:icon>modality-gaze-roll-eyes</ma:icon>
+        </ma:annotations>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="repetitions" type="xs:integer" use="optional">
+        <xs:annotation>
+          <xs:documentation>
+           <ma:annotations>
+              <ma:name>Repetitions</ma:name>
+              <ma:description>Specify the amount of repetitions, while one repetition is considered as one 360 degree eye role.</ma:description>
+              <ma:type>Attribute</ma:type>
+              <ma:measurement>Integer</ma:measurement>
+            </ma:annotations>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

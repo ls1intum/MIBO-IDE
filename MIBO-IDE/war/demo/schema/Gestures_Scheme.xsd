@@ -1,0 +1,142 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www1.in.tum.de/mibo/gestures" version="1.0" elementFormDefault="qualified" xmlns:ma="http://www1.in.tum.de/mibo/annotations">
+  <xs:import namespace="http://www1.in.tum.de/mibo/annotations" schemaLocation="MIBO_Annotations.xsd" ></xs:import>
+  <xs:annotation>
+    <xs:appinfo >
+      <ma:annotations>
+        <ma:name>Body Gestures</ma:name>
+        <ma:description>A body gesture involves any kind of body movement of an occupant. In the majority of the cases, a movement of arms and hands is used to accomplish an action. However, any movement of the head, shoulders, or the upper body are considered a body gesture.</ma:description>
+        <ma:type>Modality</ma:type>
+      </ma:annotations>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="upDownGesture">
+    <xs:annotation>
+      <xs:documentation>
+        <ma:annotations>
+          <ma:name>Up/Down</ma:name>
+          <ma:description>This body gesture starts in a pointing-like position with a stretched out arm. Afterwards, the whole arm can be raised or lowered to increase or decrease the value.</ma:description>
+          <ma:type>Body Gesture</ma:type>
+          <ma:icon>modality-upDownGesture</ma:icon>
+        </ma:annotations>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="pointAtGesture">
+    <xs:annotation>
+      <xs:documentation>
+        <ma:annotations>
+          <ma:name>Point At</ma:name>
+          <ma:description>This body gesture is achieved by stretching out one’s arm such that the elbow-hand-line points in the direction of the fixture to be selected.</ma:description>
+          <ma:type>Body Gesture</ma:type>
+          <ma:icon>modality-pointAt</ma:icon>
+        </ma:annotations>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="optional" default="false" type="xs:boolean" use="optional">
+        <xs:annotation>
+          <xs:documentation>
+           <ma:annotations>
+              <ma:name>Optional</ma:name>
+              <ma:description>If optional is activated, the modality is not necessarily required to activate the definition. However, it might support the overall recognition.</ma:description>
+              <ma:type>Attribute</ma:type>
+              <ma:measurement>Boolean</ma:measurement>
+            </ma:annotations>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="recurringHandGesture">
+    <xs:annotation>
+      <xs:documentation>
+        <ma:annotations>
+          <ma:name>Recurring Hand</ma:name>
+          <ma:description>This body gesture starts with a pointing-like position and a stretched out arm. Afterwards, the elbow is bent and the hand is moved up and down to its original position afterwards. Start and stop position look exactly the same.</ma:description>
+          <ma:type>Body Gesture</ma:type>
+          <ma:icon>modality-recurring-hand</ma:icon>
+        </ma:annotations>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="shrugShoulders">
+    <xs:annotation>
+      <xs:documentation>
+        <ma:annotations>
+          <ma:name>Shrug Shoulders</ma:name>
+          <ma:description>This body gesture is performed by raising and lowering the shoulders once.</ma:description>
+          <ma:type>Body Gesture</ma:type>
+          <ma:icon>modality-shrug-shoulders</ma:icon>
+        </ma:annotations>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="headNod">
+    <xs:annotation>
+      <xs:documentation>
+        <ma:annotations>
+          <ma:name>Nod Head</ma:name>
+          <ma:description>This body gesture is performed by tilting the head forwards and backwards once.</ma:description>
+          <ma:type>Body Gesture</ma:type>
+          <ma:icon>modality-nod-head</ma:icon>
+        </ma:annotations>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="armsTogether">
+    <xs:annotation>
+      <xs:documentation>
+        <ma:annotations>
+          <ma:name>Arms Together</ma:name>
+          <ma:description>This body gesture is achieved by laying one hand on the other arm's elbow.</ma:description>
+          <ma:type>Body Gesture</ma:type>
+          <ma:icon>modality-arms-together</ma:icon>
+        </ma:annotations>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="armAboveHead">
+    <xs:annotation>
+      <xs:documentation>
+        <ma:annotations>
+          <ma:name>Arm Above Head</ma:name>
+          <ma:description>This body gesture is achieved by raising the hand above the head and lowering it below the head afterwards.</ma:description>
+          <ma:type>Body Gesture</ma:type>
+          <ma:icon>modality-arm-above-head</ma:icon>
+        </ma:annotations>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="steadyPoseGesture">
+    <xs:annotation>
+      <xs:documentation>
+        <ma:annotations>
+          <ma:name>Steady Pose</ma:name>
+          <ma:description>This body gesture is performed by streching out the arm and keeping it in a position parallel to the ground.</ma:description>
+          <ma:type>Body Gesture</ma:type>
+          <ma:icon>modality-steadyPose</ma:icon>
+        </ma:annotations>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="min_duration_ms" type="xs:integer" use="optional">
+        <xs:annotation>
+          <xs:documentation>
+           <ma:annotations>
+              <ma:name>Minimum Duration</ma:name>
+              <ma:description>Specify how long the gesture needs to be performed to be recognized.</ma:description>
+              <ma:type>Attribute</ma:type>
+              <ma:measurement>Milliseconds</ma:measurement>
+            </ma:annotations>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

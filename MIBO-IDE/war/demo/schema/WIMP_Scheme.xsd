@@ -1,0 +1,38 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www1.in.tum.de/mibo/wimp" version="1.0" elementFormDefault="qualified" xmlns:ma="http://www1.in.tum.de/mibo/annotations">
+  <xs:import namespace="http://www1.in.tum.de/mibo/annotations" schemaLocation="MIBO_Annotations.xsd" ></xs:import>
+  <xs:annotation>
+    <xs:appinfo >
+      <ma:annotations>
+        <ma:name>Actuators</ma:name>
+        <ma:description>Any action that involves an activating activity, for example pressing a button on a physical device such as a phone, operating a light switch, or shaking an object can be considered an actuator modality.</ma:description>
+        <ma:type>Modality</ma:type>
+      </ma:annotations>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="buttonPressed">
+  	<xs:annotation>
+      <xs:documentation>
+        <ma:annotations>
+          <ma:name>Button Pressed</ma:name>
+          <ma:description>This actuator is actuated by pressing a button on a physical device.</ma:description>
+          <ma:type>Actuator</ma:type>
+          <ma:icon>modality-button-pressed</ma:icon>
+        </ma:annotations>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="id" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>
+           <ma:annotations>
+              <ma:name>ID</ma:name>
+              <ma:description>Specify the related physical device's ID.</ma:description>
+              <ma:type>Attribute</ma:type>
+              <ma:measurement>Text</ma:measurement>
+            </ma:annotations>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

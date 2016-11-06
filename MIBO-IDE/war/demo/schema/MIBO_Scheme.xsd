@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www1.in.tum.de/mibo" xmlns:selectors="http://www1.in.tum.de/mibo/selectors"
+	xmlns:trigger="http://www1.in.tum.de/mibo/trigger" xmlns:valueProvider="http://www1.in.tum.de/mibo/valueProvider"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www1.in.tum.de/mibo"
+	elementFormDefault="qualified">
+
+	<xs:import namespace="http://www1.in.tum.de/mibo/selectors"
+		schemaLocation="MIBO_Selectors.xsd" />
+	<xs:import namespace="http://www1.in.tum.de/mibo/trigger"
+		schemaLocation="MIBO_Trigger.xsd" />
+	<xs:import namespace="http://www1.in.tum.de/mibo/valueProvider"
+		schemaLocation="MIBO_ValueProvider.xsd" />
+
+	<xs:simpleType name="valueType">
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0.0" />
+			<xs:maxInclusive value="1.0" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="incrementalType">
+		<xs:sequence>
+			<xs:choice>
+				<!-- Try to Evaluate ValueProvider Condition prior to Trigger -->
+				<xs:group ref="valueProvider:valueProvider" />
+				<xs:group ref="trigger:trigger" />
+			</xs:choice>
+		</xs:sequence>
+		<xs:attribute name="by" type="valueType" use="optional" />
+	</xs:complexType>
+
+	<xs:complexType name="setElementType">
+		<xs:sequence>
+			<xs:choice>
+				<!-- Try to Evaluate ValueProvider Condition before  -->
+				<xs:group ref="valueProvider:valueProvider" />
+				<xs:group ref="trigger:trigger" />
+			</xs:choice>
+		</xs:sequence>
+		<xs:attribute name="to" type="valueType" use="optional" />
+	</xs:complexType>
+
+	<xs:complexType name="toggleType">
+		<xs:sequence>
+			<xs:group ref="trigger:trigger" />
+		</xs:sequence>
+
+		<xs:attribute name="on" default="1.0" use="optional"
+			type="valueType" />
+
+		<xs:attribute name="off" default="0.0" use="optional"
+			type="valueType" />
+	</xs:complexType>
+
+	<xs:group name="controlChild">
+		<xs:choice>
+			<xs:element name="toggle" type="toggleType" />
+			<xs:element name="set" type="setElementType" />
+			<xs:element name="increase" type="incrementalType" />
+			<xs:element name="decrease" type="incrementalType" />
+		</xs:choice>
+	</xs:group>
+
+	<xs:element name="mibo">
+		<xs:complexType>
+			<xs:sequence>
+
+				<!-- DEFINITION -->
+				<xs:element name="definition" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+
+							<!-- SCOPE -->
+							<xs:element name="scope">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="item" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:attribute name="group" type="xs:string" use="required" />
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+
+							<!-- ENTRY -->
+							<xs:element name="entry" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:group ref="trigger:trigger" minOccurs="1"
+											maxOccurs="unbounded" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+
+							<!-- SELECT -->
+							<xs:element name="select">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:group ref="selectors:selector" minOccurs="1"
+											maxOccurs="unbounded" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+
+							<!-- CONTROL -->
+							<xs:element name="control">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:group ref="controlChild" minOccurs="1"
+											maxOccurs="unbounded" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+
+							<!-- EXIT -->
+							<xs:element name="exit" minOccurs="0" maxOccurs="1">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:group ref="trigger:trigger" minOccurs="1"
+											maxOccurs="unbounded" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+
+						</xs:sequence>
+					
+					    <xs:attribute name="id" use="required" type="xs:ID" />
+					    <xs:attribute name="name" use="optional" type="xs:string" />
+					    <xs:attribute name="activated" use="optional" default="true" type="xs:boolean" />
+					
+					</xs:complexType>
+				</xs:element>
+
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

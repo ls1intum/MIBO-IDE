@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		  	xmlns:gestures="http://www1.in.tum.de/mibo/gestures"
+		  	xmlns:voice="http://www1.in.tum.de/mibo/voice"
+		  	xmlns:gaze="http://www1.in.tum.de/mibo/gaze"
+			targetNamespace="http://www1.in.tum.de/mibo/selectors" version="1.0">
+
+	<xs:import namespace="http://www1.in.tum.de/mibo/voice" schemaLocation="Voice_Scheme.xsd" />
+	<xs:import namespace="http://www1.in.tum.de/mibo/gestures" schemaLocation="Gestures_Scheme.xsd" />
+	<xs:import namespace="http://www1.in.tum.de/mibo/gaze" schemaLocation="Gaze_Scheme.xsd" />
+
+	<xs:group name="selector">
+		<xs:choice>
+			<xs:element ref="voice:lastControlledFixture" />
+			<xs:element ref="voice:selectItemGroup" />
+			<xs:element ref="voice:selectItem" />
+			<xs:element ref="gestures:pointAtGesture" />
+			<xs:element ref="gaze:lookAt" />
+		</xs:choice>
+	</xs:group>
+
+</xs:schema>

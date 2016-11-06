@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		  	xmlns:gestures="http://www1.in.tum.de/mibo/gestures"
+		  	xmlns:voice="http://www1.in.tum.de/mibo/voice"
+		  	xmlns:wimp="http://www1.in.tum.de/mibo/wimp"
+		  	xmlns:gaze="http://www1.in.tum.de/mibo/gaze"
+			targetNamespace="http://www1.in.tum.de/mibo/trigger" version="1.0">
+
+	<xs:import namespace="http://www1.in.tum.de/mibo/voice" schemaLocation="Voice_Scheme.xsd" />
+	<xs:import namespace="http://www1.in.tum.de/mibo/gestures" schemaLocation="Gestures_Scheme.xsd" />
+	<xs:import namespace="http://www1.in.tum.de/mibo/wimp" schemaLocation="WIMP_Scheme.xsd" />
+	<xs:import namespace="http://www1.in.tum.de/mibo/gaze" schemaLocation="Gaze_Scheme.xsd" />
+
+
+	<xs:group name="trigger">
+		<xs:choice>
+			<xs:element ref="gestures:steadyPoseGesture" />
+			<xs:element ref="gestures:pointAtGesture" />
+			<xs:element ref="gestures:upDownGesture" />
+			<xs:element ref="gestures:recurringHandGesture" />
+			<xs:element ref="gestures:shrugShoulders" />
+			<xs:element ref="gestures:headNod" />
+			<xs:element ref="gestures:armsTogether" />
+			<xs:element ref="gestures:armAboveHead" />		
+			<xs:element ref="voice:selectItem" />
+			<xs:element ref="wimp:buttonPressed" />
+			<xs:element ref="voice:increaseCommand" />
+			<xs:element ref="voice:decreaseCommand" />
+			<xs:element ref="voice:startDimming" />
+			<xs:element ref="voice:confirm" />
+			<xs:element ref="voice:switchOn" />
+			<xs:element ref="voice:switchOff" />
+			<xs:element ref="voice:setLevel" />
+			<xs:element ref="gaze:lookAt" />
+			<xs:element ref="gaze:rollEyes" />
+		</xs:choice>
+	</xs:group>
+
+</xs:schema>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www1.in.tum.de/mibo/annotations" elementFormDefault="qualified">
+  <xs:element name="annotations">
+  	<xs:complexType>
+  		<xs:sequence>
+  			<!-- Required -->
+  			<xs:element type="xs:string" minOccurs="1" maxOccurs="1" name="name" />
+  			<xs:element type="xs:string" minOccurs="1" maxOccurs="1" name="description"/>
+  			<!-- Optional -->
+  			<xs:element type="xs:string" minOccurs="0" maxOccurs="1" name="type" />
+  			<xs:element type="xs:string" minOccurs="0" maxOccurs="1" name="measurement" />
+  		</xs:sequence>
+  	</xs:complexType>
+  </xs:element>
+</xs:schema>

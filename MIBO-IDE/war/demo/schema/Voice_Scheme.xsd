@@ -1,0 +1,181 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www1.in.tum.de/mibo/voice" version="1.0" elementFormDefault="qualified" xmlns:ma="http://www1.in.tum.de/mibo/annotations">
+  <xs:import namespace="http://www1.in.tum.de/mibo/annotations" schemaLocation="MIBO_Annotations.xsd" ></xs:import>
+  <xs:annotation>
+    <xs:appinfo >
+      <ma:annotations>
+        <ma:name>Voice Commands</ma:name>
+        <ma:description>As one of the most commonly known modalities to transport information, the voice commands are applied using the natural language. By varying the volume or pitch level, additional information can be added.</ma:description>
+        <ma:type>Modality</ma:type>
+      </ma:annotations>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="selectItemGroup">
+    <xs:annotation>
+      <xs:documentation>
+        <ma:annotations>
+          <ma:name>Select Item Group</ma:name>
+          <ma:description>This voice command is performed by saying the name of the item group which should be selected.</ma:description>
+          <ma:type>Voice Command</ma:type>
+          <ma:icon>modality-voice-select-item-group</ma:icon>
+        </ma:annotations>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="optional" default="false" type="xs:boolean" use="optional">
+        <xs:annotation>
+          <xs:documentation>
+           <ma:annotations>
+              <ma:name>Optional</ma:name>
+              <ma:description>If optional is activated, the modality is not necessarily required to activate the definition. However, it might support the overall recognition.</ma:description>
+              <ma:type>Attribute</ma:type>
+              <ma:measurement>Boolean</ma:measurement>
+            </ma:annotations>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="selectItem">
+    <xs:annotation>
+      <xs:documentation>
+        <ma:annotations>
+          <ma:name>Select Item</ma:name>
+          <ma:description>This voice command is performed by saying the name of the item which should be selected.</ma:description>
+          <ma:type>Voice Command</ma:type>
+          <ma:icon>modality-voice-select-item</ma:icon>
+        </ma:annotations>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="optional" default="false" type="xs:boolean" use="optional">
+        <xs:annotation>
+          <xs:documentation>
+           <ma:annotations>
+              <ma:name>Optional</ma:name>
+              <ma:description>If optional is activated, the modality is not necessarily required to activate the definition. However, it might support the overall recognition.</ma:description>
+              <ma:type>Attribute</ma:type>
+              <ma:measurement>Boolean</ma:measurement>
+            </ma:annotations>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="lastControlledFixture">
+    <xs:annotation>
+      <xs:documentation>
+        <ma:annotations>
+          <ma:name>Select Last Controlled Fixture</ma:name>
+          <ma:description>This voice command is performed by using a sentence construction referring to the last controlled scope item, such as "Last Controlled Light".</ma:description>
+          <ma:type>Voice Command</ma:type>
+          <ma:icon>modality-voice-select-last-item</ma:icon>
+        </ma:annotations>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="optional" default="false" type="xs:boolean" use="optional">
+        <xs:annotation>
+          <xs:documentation>
+           <ma:annotations>
+              <ma:name>Optional</ma:name>
+              <ma:description>If optional is activated, the modality is not necessarily required to activate the definition. However, it might support the overall recognition.</ma:description>
+              <ma:type>Attribute</ma:type>
+              <ma:measurement>Boolean</ma:measurement>
+            </ma:annotations>
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="switchOn">
+    <xs:annotation>
+      <xs:documentation >
+        <ma:annotations>
+          <ma:name>Switch On</ma:name>
+          <ma:description>This voice command is performed by saying the words "Switch On".</ma:description>
+          <ma:type>Voice Command</ma:type>
+          <ma:icon>modality-voice-switch-on</ma:icon>
+        </ma:annotations>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="switchOff">
+    <xs:annotation>
+      <xs:documentation>
+        <ma:annotations>
+          <ma:name>Switch Off</ma:name>
+          <ma:description>This voice command is performed by saying the words "Switch Off".</ma:description>
+          <ma:type>Voice Command</ma:type>
+          <ma:icon>modality-voice-switch-off</ma:icon>
+        </ma:annotations>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="setLevel">
+    <xs:annotation>
+      <xs:documentation >
+        <ma:annotations>
+          <ma:name>Set Level</ma:name>
+          <ma:description>This voice command is performed by saying the words "Set [Fixture] to [Level] percent" whereby [Fixture] represents the type of a fixture, such as "Light".</ma:description>
+          <ma:type>Voice Command</ma:type>
+          <ma:icon>modality-voice-set-level</ma:icon>
+        </ma:annotations>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="increaseCommand">
+    <xs:annotation>
+      <xs:documentation>
+        <ma:annotations>
+          <ma:name>Increase</ma:name>
+          <ma:description>This voice command is performed by saying the word "Increase".</ma:description>
+          <ma:type>Voice Command</ma:type>
+          <ma:icon>modality-voice-increase</ma:icon>
+        </ma:annotations>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="decreaseCommand">
+    <xs:annotation>
+      <xs:documentation>
+        <ma:annotations>
+          <ma:name>Decrease</ma:name>
+          <ma:description>This voice command is performed by saying the word "Decrease".</ma:description>
+          <ma:type>Voice Command</ma:type>
+          <ma:icon>modality-voice-decrease</ma:icon>
+        </ma:annotations>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="startDimming">
+    <xs:annotation>
+      <xs:documentation>
+        <ma:annotations>
+          <ma:name>Start Dimming</ma:name>
+          <ma:description>This voice command is performed by saying the words "Start Dimming".</ma:description>
+          <ma:type>Voice Command</ma:type>
+          <ma:icon>modality-voice-start-dimming</ma:icon>
+        </ma:annotations>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType/>
+  </xs:element>
+  <xs:element name="confirm">
+    <xs:annotation>
+      <xs:documentation>
+        <ma:annotations>
+          <ma:name>Confirm</ma:name>
+          <ma:description>This voice command is performed by saying the word "Confirm".</ma:description>
+          <ma:type>Voice Command</ma:type>
+          <ma:icon>modality-voice-confirm</ma:icon>
+        </ma:annotations>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType/>
+  </xs:element>
+</xs:schema>
