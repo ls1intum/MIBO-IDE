@@ -26,8 +26,15 @@ public class EditorEntry implements EntryPoint {
 					int HTTP_CODE = resp.getStatusCode();
 					String HTTP_RESPONSE = resp.getText();
 
-					// Response needs to be 200 and contain content
-					if (HTTP_CODE == 200 && !HTTP_RESPONSE.isEmpty()) {
+					// Response needs to be 200 to proceed
+					if (HTTP_CODE == 200){
+
+						// Indicate demo mode
+						if (HTTP_RESPONSE.isEmpty()) {
+							LayerManager.getInstance().showToast("Demo mode activated");
+						} else {
+							LayerManager.getInstance().showToast("Connected to Mibo");
+						}
 
 						// Start the overall application
 						new MainController(HTTP_RESPONSE);
@@ -38,10 +45,9 @@ public class EditorEntry implements EntryPoint {
 
 						message += "Could not receive a base URL.\n\n";
 						message += "Please update the content of baseURL.txt ";
-						message += "with the an URL to MIBO.\n\n";
-						message += "Content-Example:\n";
-						message += "http://127.0.0.1:8080/services/mibo/api/v1/rest/";
-
+						message += "with the an URL to MIBO. Example:\n";
+						message += "http://127.0.0.1:8080/services/mibo/api/v1/rest/ \n\n";
+						message += "Leave baseURL.txt empty for starting demo mode.";
 						// Show error message ...
 						Window.alert(message);
 						
