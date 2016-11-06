@@ -108,11 +108,11 @@ public class MiboServiceImpl extends RemoteServiceServlet implements MiboService
 		// 0. Setup
 		XMLUnmarshaller unmarshaller = new XMLUnmarshaller();
 		List<AbstractScopeItem> fixtures = new ArrayList<AbstractScopeItem>();
-		ConnectionManager connector = new ConnectionManager();
+		ConnectionManager connector = new ConnectionManager(baseURL);
 
 		// 1. Get raw data
-		String response = connector.get(baseURL + "itemGroups");
-
+		String response = connector.get("itemGroups");
+		
 		// 2. Get processed data
 		fixtures = unmarshaller.getFixtures(response);
 		
@@ -131,7 +131,7 @@ public class MiboServiceImpl extends RemoteServiceServlet implements MiboService
 	private List<EventItemGroup> getMIBOModalityGroups(String baseURL) {
 
 		// Setup
-		ConnectionManager connector = new ConnectionManager();
+		ConnectionManager connector = new ConnectionManager(baseURL);
 		XMLParser xmlParser = new XMLParser();
 		List<EventItemGroup> modality_groups = new ArrayList<EventItemGroup>();
 
@@ -156,8 +156,7 @@ public class MiboServiceImpl extends RemoteServiceServlet implements MiboService
 			// [EXTENSION]
 			// Update baseURL in case location of XSD changes
 			
-			String url = baseURL + "schema/" + entry.getValue();
-			String response = connector.get(url);
+			String response = connector.get("schema/" + entry.getValue());
 			Document doc = xmlParser.createDocFromXML(response);
 			EventItemGroup group = xmlParser.getModalityItemGroupFromDoc(doc);
 
@@ -223,7 +222,7 @@ public class MiboServiceImpl extends RemoteServiceServlet implements MiboService
 	 */
 	private List<Event> getMIBOEvents(String baseURL) {
 
-		ConnectionManager connector = new ConnectionManager();
+		ConnectionManager connector = new ConnectionManager(baseURL);
 		XMLParser xmlParser = new XMLParser();
 		List<Event> events = new ArrayList<Event>();
 
@@ -234,7 +233,7 @@ public class MiboServiceImpl extends RemoteServiceServlet implements MiboService
 
 		for (String location : eventLocations) {
 
-			String response = connector.get(baseURL + "schema/" + location);
+			String response = connector.get("schema/" + location);
 			Document doc = xmlParser.createDocFromXML(response);
 			Event event = xmlParser.getEventFromDoc(doc);
 			events.add(event);
@@ -280,10 +279,10 @@ public class MiboServiceImpl extends RemoteServiceServlet implements MiboService
 		// 0. Setup
 		XMLUnmarshaller unmarshaller = new XMLUnmarshaller();
 		List<TargetGroup> targetGroupList = new ArrayList<TargetGroup>();
-		ConnectionManager connector = new ConnectionManager();
+		ConnectionManager connector = new ConnectionManager(baseURL);
 
 		// 1. Get raw data
-		String responseTargetGroup = connector.get(baseURL + "namespaces");
+		String responseTargetGroup = connector.get("namespaces");
 
 		// 2. Get processed data
 		targetGroupList = unmarshaller.getTargetGroups(responseTargetGroup);
@@ -322,12 +321,12 @@ public class MiboServiceImpl extends RemoteServiceServlet implements MiboService
 		// 0. Setup
 		XMLUnmarshaller unmarshaller = new XMLUnmarshaller();
 		List<User> users = new ArrayList<User>();
-		ConnectionManager connector = new ConnectionManager();
+		ConnectionManager connector = new ConnectionManager(baseURL);
 
 		// 1. Get raw data
 		String targetGroupIdentifier = targetGroup.getIdentifier();
-		String response = connector.get(baseURL + "namespaces/" + targetGroupIdentifier + "/users");
-
+		String response = connector.get("namespaces/" + targetGroupIdentifier + "/users");
+		
 		// 2. Get processed data
 		users = unmarshaller.getUsers(response);
 
@@ -349,11 +348,11 @@ public class MiboServiceImpl extends RemoteServiceServlet implements MiboService
 		// 0. Setup
 		XMLUnmarshaller unmarshaller = new XMLUnmarshaller();
 		Mibo mibo = new Mibo();
-		ConnectionManager connector = new ConnectionManager();
+		ConnectionManager connector = new ConnectionManager(baseURL);
 
 		// 1. Get raw data
 		String targetGroupIdentifier = targetGroup.getIdentifier();
-		String response = connector.get(baseURL + "definitions/" + targetGroupIdentifier);
+		String response = connector.get("definitions/" + targetGroupIdentifier);
 
 		// 2. Get processed data
 		mibo = unmarshaller.getMIBOMibo(factory, response);
@@ -377,13 +376,13 @@ public class MiboServiceImpl extends RemoteServiceServlet implements MiboService
 		// 0. Setup
 		XMLUnmarshaller unmarshaller = new XMLUnmarshaller();
 		Mibo mibo = new Mibo();
-		ConnectionManager connector = new ConnectionManager();
+		ConnectionManager connector = new ConnectionManager(baseURL);
 
 		// 1. Get raw data
 		String targetGroupID = targetGroup.getIdentifier();
 		String userID = user.getIdentifier();
-		String response = connector.get(baseURL + "definitions/" + targetGroupID + "/" + userID);
-
+		String response = connector.get("definitions/" + targetGroupID + "/" + userID);
+		
 		// 2. Get processed data
 		mibo = unmarshaller.getMIBOMibo(factory, response);
 
@@ -412,14 +411,14 @@ public class MiboServiceImpl extends RemoteServiceServlet implements MiboService
 		String miboString = xmlMarshaller.transformDocToString(miboDoc, true);
 
 		// Post content to server
-		ConnectionManager connector = new ConnectionManager();
+		ConnectionManager connector = new ConnectionManager(baseURL);
 		String url = "";
 		
 		// Depending on the user type (Generic/Custom) use different URLs
 		if(targetGroup.getGenericUser() == user){
-			url = baseURL + "definitions/" + targetGroup.getIdentifier();
+			url = "definitions/" + targetGroup.getIdentifier();
 		} else {
-			url = baseURL + "definitions/" + targetGroup.getIdentifier() + "/" + user.getIdentifier();
+			url = "definitions/" + targetGroup.getIdentifier() + "/" + user.getIdentifier();
 		}
 
 		connector.post(url, miboString);
@@ -430,10 +429,10 @@ public class MiboServiceImpl extends RemoteServiceServlet implements MiboService
 	public void deleteTargetGroup(TargetGroup targetGroup, String baseURL) {
 
 		// 0. Setup
-		ConnectionManager connector = new ConnectionManager();
+		ConnectionManager connector = new ConnectionManager(baseURL);
 
 		// 1. Run delete request
-		connector.delete(baseURL + "definitions/" + targetGroup.getIdentifier());
+		connector.delete("definitions/" + targetGroup.getIdentifier());
 
 	}
 
@@ -441,10 +440,10 @@ public class MiboServiceImpl extends RemoteServiceServlet implements MiboService
 	public void deleteUser(TargetGroup targetGroup, User customUser, String baseURL) {
 
 		// 0. Setup
-		ConnectionManager connector = new ConnectionManager();
+		ConnectionManager connector = new ConnectionManager(baseURL);
 
 		// 1. Run delete request
-		connector.delete(baseURL + "definitions/" + targetGroup.getIdentifier() + "/" + customUser.getIdentifier());
+		connector.delete("definitions/" + targetGroup.getIdentifier() + "/" + customUser.getIdentifier());
 
 	}
 

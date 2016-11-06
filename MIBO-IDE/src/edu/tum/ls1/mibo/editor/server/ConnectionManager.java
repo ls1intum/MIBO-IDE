@@ -1,6 +1,8 @@
 package edu.tum.ls1.mibo.editor.server;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
@@ -12,25 +14,56 @@ public class ConnectionManager {
 
 	private static final Logger log = Logger.getLogger(XMLParser.class.getName());
 
-	public ConnectionManager() {
+	/**
+	 * Demo mode enables loading a set of data (modalities, fixtures, and
+	 * interaction definitions). Furtheremore, deleting and posting new
+	 * information is disabled and will not be persisted.
+	 */
+	private Boolean demoMode = false;
+	
+	/**
+	 * Represents base URL to MIBO instance, such as
+	 * http://127.0.0.1:8080/services/mibo/api/v1/rest/
+	 */
+	private String baseURL;
+	
+	public ConnectionManager(String baseURL) {
+		
 		log.setLevel(Level.OFF);
+
+		// In case no URL (in fact, no content at all) is provided, we assume
+		// that the demo mode should be activated
+		if (baseURL.isEmpty()) {
+			demoMode = true;
+		}
+
+		// Store MIBO's base URL
+		this.baseURL = baseURL;
+		
 	}
 
 	/**
 	 * Sending a GET request and receiving the resonse.
 	 * 
-	 * @param targetURL
-	 *            The URL the HTTP request should be send to.
+	 * @param fileURL
+	 *            The specific file URL the HTTP request should be send to.
 	 * @return The response of the HTTP request.
 	 */
-	public String get(String targetURL) {
-
-		log.info("Sending GET request to " + targetURL);
+	public String get(String fileURL) {
+		
+		// Use dedicated helper method to load demo data
+		if (demoMode) {
+			return this.getDemoData(fileURL);
+		}
+		
+		// Prepare URL
+		String fullURL = this.baseURL + fileURL;
+		log.info("Sending GET request to " + fullURL);
 
 		try {
 
 			// Create a new URL from the input string
-			URL url = new URL(targetURL);
+			URL url = new URL(fullURL);
 
 			// Open the connection based on the URL
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -60,7 +93,7 @@ public class ConnectionManager {
 
 		} catch (Exception e) {
 
-			log.info("An exception occured when sending GET request to " + targetURL);
+			log.info("An exception occured when sending GET request to " + fullURL);
 			e.printStackTrace();
 
 		}
@@ -68,21 +101,78 @@ public class ConnectionManager {
 		return null;
 
 	}
+	
+	/**
+	 * Helper method for returning demo data in case no MIBO instance is
+	 * available (in particular, no MIBO instance was defined in the baseURL.txt
+	 * 
+	 * @param file
+	 *            Define which file is requested
+	 * @return The demo content of the requested file
+	 */
+	private String getDemoData(String file) {
+
+		// Prepare path using the local path
+		String path = System.getProperty("user.dir") + "/demo/" + file;
+
+		// Adjust the file extensions for the requested file. In particular,
+		// aligne the local files with their REST-equivalent)
+		if (file.startsWith("definitions")) {
+
+			// Definitions are XML files.
+			path += ".xml";
+
+		} else if (file.startsWith("schema")) {
+
+			// Schema files already contain the correct extension
+
+		} else {
+
+			// All other file types are json files
+			path += ".json";
+
+		}
+
+		log.info("Retrieving demo data from" + path);
+
+		// Prepare file loading
+		String response = "";
+		File myFile = new File(path);
+
+		try (BufferedReader reader = new BufferedReader(new FileReader(myFile))) {
+			String line;
+			while ((line = reader.readLine()) != null) {
+				response += line;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return response;
+	}
 
 	/**
 	 * Sending a DELETE request.
 	 * 
-	 * @param targetURL
-	 *            The URL the HTTP request should be send to.
+	 * @param fileURL
+	 *            The specific file URL the HTTP request should be send to.
 	 */
-	public void delete(String targetURL) {
+	public void delete(String fileURL) {
 
-		log.info("Sending DELETE request to " + targetURL);
+		// Demo mode should not effect any persistent data
+		if (demoMode) {
+			log.warning("Skipping DELETE request due to demo mode");
+			return;
+		}
+
+		// Prepare URL
+		String fullURL = this.baseURL + fileURL;
+		log.info("Sending DELETE request to " + fullURL);
 
 		try {
 
 			// Create a new URL from the input string
-			URL url = new URL(targetURL);
+			URL url = new URL(fullURL);
 
 			// Open the connection based on the URL
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -114,7 +204,7 @@ public class ConnectionManager {
 
 		} catch (Exception e) {
 
-			log.info("An exception occured when sending DELETE request to " + targetURL);
+			log.info("An exception occured when sending DELETE request to " + fullURL);
 			e.printStackTrace();
 
 		}
@@ -124,17 +214,27 @@ public class ConnectionManager {
 	/**
 	 * Sending a POST request.
 	 * 
-	 * @param targetURL
-	 *            The URL the HTTP request should be send to.
+	 * @param fileURL
+	 *            The specific file URL the HTTP request should be send to.
+	 * @param content
+	 *            The HTTP post content.
 	 */
-	public void post(String targetURL, String content) {
+	public void post(String fileURL, String content) {
 
-		log.info("Sending POST request to " + targetURL);
+		// Demo mode should not effect any persistent data
+		if (demoMode) {
+			log.warning("Skipping POST request due to demo mode");
+			return;
+		}
+		
+		// Prepare URL
+		String fullURL = this.baseURL + fileURL;
+		log.info("Sending POST request to " + fullURL);
 
 		try {
 
 			// Create a new URL from the input string
-			URL url = new URL(targetURL);
+			URL url = new URL(fullURL);
 
 			// Open the connection based on the URL
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -172,7 +272,7 @@ public class ConnectionManager {
 
 		} catch (Exception e) {
 
-			log.info("An excpetion occured when sending POST request to " + targetURL);
+			log.info("An excpetion occured when sending POST request to " + fullURL);
 			e.printStackTrace();
 
 		}

@@ -33,7 +33,7 @@ public class EditorEntry implements EntryPoint {
 						if (HTTP_RESPONSE.isEmpty()) {
 							LayerManager.getInstance().showToast("Demo mode activated");
 						} else {
-							LayerManager.getInstance().showToast("Connected to Mibo");
+							LayerManager.getInstance().showToast("Connected to MIBO");
 						}
 
 						// Start the overall application
